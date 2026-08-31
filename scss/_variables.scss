@@ -1,0 +1,21 @@
+// Font 
+$font-main: 'Merriweather Sans', sans-serif;
+$font-heading: 'Enriqueta', serif;
+$font-accent: 'Rochester', cursive;
+
+// Renk 
+$bg-main: #f8f5ff;
+$bg-card: #ffffff;
+$text-primary: #1e1b4b;
+$text-muted: #6b7280;
+$border-color: rgba(168, 85, 247, 0.15);
+
+$primary-purple: #a855f7;
+$primary-gradient: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+$bg-gradient: linear-gradient(180deg, #f3e8ff 0%, #f8f5ff 100%);
+
+// Ölçüler
+$card-radius: 16px;
+$modal-radius: 20px;
+$backdrop-blur: 8px;
+$transition-fast: all 0.25s ease-in-out;

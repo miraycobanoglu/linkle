@@ -1,0 +1,24 @@
+{
+  "name": "linkle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch scss/style.scss:css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miraycobanoglu/linkle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miraycobanoglu/linkle/issues"
+  },
+  "homepage": "https://github.com/miraycobanoglu/linkle#readme",
+  "devDependencies": {
+    "sass": "^1.103.1"
+  }
+}

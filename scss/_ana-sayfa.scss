@@ -1,0 +1,169 @@
+@import 'variables';
+
+// Global Arka Plan Gradient
+body {
+  background: #ffffff;
+  color: $text-primary;
+  font-family: $font-main;
+  margin: 0;
+}
+
+// 1. NAVBAR (Pastel Leylak Arka Plan)
+.lk-navbar {
+  background: linear-gradient(180deg, #f3e8ff 0%, #fae8ff 100%);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+
+  .lk-brand-name {
+    font-family: $font-main;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+
+    span {
+      color: $primary-purple;
+    }
+  }
+
+  // Arama Barı
+  .lk-search-box {
+    position: relative;
+    width: 260px;
+
+    .lk-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: #a1a1aa;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 16px 8px 36px;
+      border-radius: 50px;
+      border: 1px solid #ffffff;
+      background: #ffffff;
+      outline: none;
+      font-size: 0.9rem;
+      
+      &::placeholder {
+        color: #a1a1aa;
+      }
+    }
+  }
+
+  // Profiller Menüsü (Rochester Script Font)
+  .lk-nav-profiles {
+    font-family: $font-accent;
+    font-size: 2.2rem;
+    color: #111827;
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      color: $primary-purple;
+    }
+  }
+
+  // Hesap Sağ Taraf
+  .lk-account-text {
+    font-family: $font-accent;
+    font-size: 1.8rem;
+    color: #111827;
+
+    span {
+      font-size: 1rem;
+      font-family: $font-main;
+    }
+  }
+
+  .lk-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+// 2. HERO KART BÖLÜMÜ
+.lk-hero-card {
+  background: #fdfbfd;
+  border: 1px solid #f3e8ff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  max-width: 650px;
+
+  p {
+    font-family: $font-main;
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// 3. FİLTRE BUTONU
+.lk-filter-btn {
+  background: #f5e8ff;
+  color: #c084fc;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 12px;
+  font-family: $font-main;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &:hover {
+    background: #eed5ff;
+  }
+}
+
+// 4. KARTLAR VE İNCELE BUTONU
+.lk-card {
+  position: relative;
+  border-radius: 0px; // Figma'da kartların köşeleri keskin
+  overflow: hidden;
+
+  .lk-card-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Sol Alt Şeffaf İncele Butonu
+  .lk-btn-card-incele {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(4px);
+    color: #9333ea;
+    padding: 6px 28px;
+    border-radius: 8px;
+    font-family: $font-main;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #7e22ce;
+    }
+  }
+}
+
+// Bootstrap Grid Custom 5'li Kolon Yapısı
+@media (min-width: 992px) {
+  .col-lg-2-4 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}

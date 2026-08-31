@@ -1,0 +1,308 @@
+/* ==========================================================
+   RESET
+========================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   HTML
+========================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================
+   BODY
+========================================================== */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================
+   MEDIA
+========================================================== */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ==========================================================
+   FORM ELEMENTS
+========================================================== */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* ==========================================================
+   LINK
+========================================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================
+   LIST
+========================================================== */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ==========================================================
+   HEADING
+========================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ==========================================================
+   PARAGRAPH
+========================================================== */
+p {
+  overflow-wrap: break-word;
+}
+
+/* ==========================================================
+   QUOTES
+========================================================== */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: "";
+}
+
+/* ==========================================================
+   HR
+========================================================== */
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+::selection {
+  background: #222;
+  color: #fff;
+}
+
+/* ==========================================================
+   SCROLLBAR (Chrome)
+========================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+body {
+  background: #ffffff;
+  color: #1e1b4b;
+  font-family: "Merriweather Sans", sans-serif;
+  margin: 0;
+}
+
+.lk-navbar {
+  background: linear-gradient(180deg, #f3e8ff 0%, #fae8ff 100%);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+}
+.lk-navbar .lk-brand-name {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+.lk-navbar .lk-brand-name span {
+  color: #a855f7;
+}
+.lk-navbar .lk-search-box {
+  position: relative;
+  width: 260px;
+}
+.lk-navbar .lk-search-box .lk-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+.lk-navbar .lk-search-box input {
+  width: 100%;
+  padding: 8px 16px 8px 36px;
+  border-radius: 50px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  outline: none;
+  font-size: 0.9rem;
+}
+.lk-navbar .lk-search-box input::placeholder {
+  color: #a1a1aa;
+}
+.lk-navbar .lk-nav-profiles {
+  font-family: "Rochester", cursive;
+  font-size: 2.2rem;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+}
+.lk-navbar .lk-nav-profiles:hover {
+  color: #a855f7;
+}
+.lk-navbar .lk-account-text {
+  font-family: "Rochester", cursive;
+  font-size: 1.8rem;
+  color: #111827;
+}
+.lk-navbar .lk-account-text span {
+  font-size: 1rem;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.lk-navbar .lk-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.lk-hero-card {
+  background: #fdfbfd;
+  border: 1px solid #f3e8ff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  max-width: 650px;
+}
+.lk-hero-card p {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.lk-filter-btn {
+  background: #f5e8ff;
+  color: #c084fc;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 12px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lk-filter-btn:hover {
+  background: #eed5ff;
+}
+
+.lk-card {
+  position: relative;
+  border-radius: 0px;
+  overflow: hidden;
+}
+.lk-card .lk-card-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+.lk-card .lk-btn-card-incele {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(4px);
+  color: #9333ea;
+  padding: 6px 28px;
+  border-radius: 8px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+}
+.lk-card .lk-btn-card-incele:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #7e22ce;
+}
+
+@media (min-width: 992px) {
+  .col-lg-2-4 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
