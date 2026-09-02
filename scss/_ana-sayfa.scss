@@ -8,15 +8,18 @@ body {
   margin: 0;
 }
 
-// 1. NAVBAR (Pastel Leylak Arka Plan)
+// NAVBAR 
 .lk-navbar {
-  background: linear-gradient(180deg, #f3e8ff 0%, #fae8ff 100%);
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
-
+  background: linear-gradient(90deg, #FDFBFD 0%, #C777EB4D 100%);
+  padding: 20px 0;
+  width: auto;
+  height:102px;
+.container-fluid{
+  padding-top:12px;
+}
   .lk-brand-name {
     font-family: $font-main;
-    font-size: 2rem;
+    font-size: 35px;
     font-weight: 700;
     color: #111827;
 
@@ -25,7 +28,7 @@ body {
     }
   }
 
-  // Arama Barı
+  // Arama
   .lk-search-box {
     position: relative;
     width: 260px;
@@ -54,23 +57,60 @@ body {
     }
   }
 
-  // Profiller Menüsü (Rochester Script Font)
+
   .lk-nav-profiles {
     font-family: $font-accent;
-    font-size: 2.2rem;
+    font-size: 30px;
     color: #111827;
     text-decoration: none;
     transition: $transition-fast;
+    position:relative;
 
-    &:hover {
-      color: $primary-purple;
-    }
+  &::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px; 
+    background: black; 
+    border-radius: 2px; 
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(2px);
+  }
+&.active::after,
+  &:active::after,&:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
   }
 
   // Hesap Sağ Taraf
+  .lk-account-dropdown{
+    padding-right:40px;
+    cursor:pointer;
+      position: relative;
+  overflow: visible !important; // Kartın navbar dışına taşmasına izin verir
+  }
+  .hesap{
+    gap: 15px;
+
+  }
+  .hesap-logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lk-account-icon{
+    padding-top:8px;
+  }
   .lk-account-text {
     font-family: $font-accent;
-    font-size: 1.8rem;
+    font-size: 25px;
     color: #111827;
 
     span {
@@ -80,23 +120,54 @@ body {
   }
 
   .lk-avatar {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
   }
+
+.logo-search{
+  gap:50px;
+
+  .lk-logo-div{
+    align-items: flex-end;
+  }
+}
+.search-profiller{
+  gap: 200px;
 }
 
-// 2. HERO KART BÖLÜMÜ
+.lk-dropdown-menu{
+
+position: absolute;
+right:0;
+margin-top: -20px; 
+z-index: 9999;
+  width: 377px;
+  height: 223px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap:25px;
+  padding-left:40px;
+  justify-content: center;
+display:none;
+border-radius: 20px;
+
+  .dropdown-icerik{
+    gap:15px;
+  }
+}
+// HERO KART BÖLÜMÜ
 .lk-hero-card {
-  background: #fdfbfd;
-  border: 1px solid #f3e8ff;
-  border-radius: 12px;
+  background: #C777EB0D;
+  border-radius: 10px;
   padding: 24px 32px;
-  max-width: 650px;
+  height: 132px;
+  width:auto;
 
   p {
-    font-family: $font-main;
+    font-family: $font-heading;
     font-size: 1rem;
     color: #4b5563;
     line-height: 1.6;
@@ -104,58 +175,124 @@ body {
   }
 }
 
-// 3. FİLTRE BUTONU
-.lk-filter-btn {
-  background: #f5e8ff;
-  color: #c084fc;
-  border: none;
-  padding: 8px 24px;
-  border-radius: 12px;
-  font-family: $font-main;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+//FİLTRE BUTONU
 
-  &:hover {
-    background: #eed5ff;
+.lk-filter-dropdown {
+  display: inline-block;
+  width: 188px; 
+
+  // ANA FİLTRE BUTONU
+  .lk-filter-btn {
+    width: 188px;
+    height: 50px;
+    background: rgba(248, 234, 255, 0.647);
+    border: none;
+    border-radius: 12px;
+    font-family: $font-heading;
+    font-size: 23px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    outline: none;
+    transition: border-radius 0.2s ease;
+
+    p {
+      background: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.64; 
+      display: inline-block; 
+      margin: 0 0 0 20px;
+    }
+
+    img {
+      padding-top: 5px;
+      transition: transform 0.2s ease;
+    }
+  }
+  .lk-filter-btn2 {
+    display: none; 
+    position: static; // Absolute kaldırıldı; açıldığında görselleri aşağı iter
+    width: 100%;
+    background: rgba(248, 234, 255, 0.647);
+    border-radius: 0 0 12px 12px;
+    padding: 10px 0;
+
+    .lk-filter-item {
+      width: 100%;
+      height: 40px;
+      background: transparent;
+      border: none;
+      padding: 0 20px;
+      text-align: left;
+      font-family: $font-heading;
+      font-size: 16px;
+      cursor: pointer;
+      background-image: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.64;
+      transition: opacity 0.2s ease;
+    }
+  }
+  &:focus-within {
+    .lk-filter-btn {
+      border-radius: 12px 12px 0 0; // Alt köşeleri menüyle birleştirir
+
+      img {
+        transform: rotate(180deg);
+      }
+    }
+
+    .lk-filter-btn2 {
+      display: block; 
+    }
   }
 }
 
-// 4. KARTLAR VE İNCELE BUTONU
+// KARTLAR VE İNCELE BUTONU
 .lk-card {
   position: relative;
-  border-radius: 0px; // Figma'da kartların köşeleri keskin
+  border-radius: 0px; 
   overflow: hidden;
+   background: #c677eb41;
+   display: inline-block;
 
   .lk-card-img {
-    width: 100%;
-    height: 380px;
+    width:213px;
+    height: 285px;
     object-fit: cover;
     display: block;
+    mix-blend-mode: multiply; 
+    opacity: 0.8;
+
   }
 
   // Sol Alt Şeffaf İncele Butonu
   .lk-btn-card-incele {
+    width:140px;
+    height:35px;
     position: absolute;
     bottom: 16px;
     left: 16px;
-    background: rgba(255, 255, 255, 0.65);
+    background: #d9d9d99a;
     backdrop-filter: blur(4px);
-    color: #9333ea;
-    padding: 6px 28px;
-    border-radius: 8px;
-    font-family: $font-main;
-    font-weight: 600;
-    font-size: 0.95rem;
+    color:#752699;
+    border-radius: 10px;
+    font-family: $font-heading;
+    font-size: 17px;
     text-decoration: none;
     transition: $transition-fast;
+    padding-left:20px;
+    padding-top:4px;
+    z-index:2;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.9);
-      color: #7e22ce;
+      background: white;
+      color: #752699;
     }
   }
 }

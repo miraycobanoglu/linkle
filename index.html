@@ -19,39 +19,57 @@
 <body>
 
   <header class="lk-navbar">
-    <div class="container-fluid px-5 d-flex align-items-center justify-content-between">
-      
-      <!-- Sol: SVG Logo + Linkle Metni -->
-      <a href="index.html" class="lk-logo-div d-flex align-items-center">
-        <img src="images/join.svg" alt="Linkle Logo" class="lk-logo">
+    <div class="container-fluid px-4 d-flex align-items-center justify-content-between">
+
+      <div class="logo-search d-flex align-items-center">
+      <!-- Logo -->
+      <a href="index.html" class="lk-logo-div d-flex">
+        <img src="images/logo.svg" alt="Linkle Logo" class="lk-logo">
         <span class="lk-brand-name">L<span>in</span>kle</span>
       </a>
 
-      <!-- Arama Barı -->
-      <div class="lk-search-box">
-        <span class="lk-search-icon">🔍</span>
-        <input type="search" placeholder="Search..." id="searchInput">
+      <!-- Arama -->
+      <div class="search-profiller d-flex align-items-center">
+
+        <div class="lk-search-box">
+          <span class="lk-search-icon"><img src="images/search.svg" alt="Search Icon"></span>
+          <input type="search" placeholder="Search..." id="searchInput">
+        </div>
+             <!-- Profiller -->
+      <a href="profiles.html" class="lk-nav-profiles">Profiller</a>
+      </div>
       </div>
 
-      <!-- Orta Menü: Profiller (Rochester Fontu) -->
-      <a href="profiles.html" class="lk-nav-profiles">Profiller</a>
 
-      <!-- Sağ Menü: Profil Avatar + Hesap Dropdown -->
+
+      <!-- Sağ Menü: Profil -->
       <div class="lk-account-dropdown">
-        <div class="d-flex align-items-center gap-2 cursor-pointer" id="dropdownToggle">
+        <div class="hesap d-flex align-items-center cursor-pointer" id="dropdownToggle">
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar" class="lk-avatar">
-          <span class="lk-account-text">Hesap <span>∨</span></span>
+          <div class="hesap-logo">
+          <p class="lk-account-text">Hesap </p>
+          <img class="lk-account-icon" src="images/Vector.svg" alt="Dropdown Icon">
+          </div>
         </div>
         
-        <div class="lk-dropdown-menu" id="dropdownMenu">
-          <a href="profile.html?user=me">Profil</a>
-          <a href="#">Ayarlar</a>
-          <a href="#">Mod</a>
-        </div>
       </div>
-
     </div>
   </header>
+          
+  <div class="lk-dropdown-menu" id="dropdownMenu">
+          <a href="#" class="dropdown-icerik d-flex align-items-center">
+            <img src="images/account_circle.svg" alt="Avatar" class="dropdown-profil width:29 height:29">
+            <p>Profil</p>
+          </a>
+          <a href="#" class="dropdown-icerik d-flex align-items-center gap-2">
+            <img src="images/brightness_auto.svg" alt="Settings" class="dropdown-ayarlar width:29 height:29">
+            <p>Ayarlar</p>
+          </a>
+          <a href="#" class="dropdown-icerik d-flex align-items-center gap-2">
+            <img src="images/brightness_6.svg" alt="Mod" class="dropdown-mod width:29 height:29">
+            <p>Mod</p>
+          </a>
+    </div>
 
   <!-- MAIN CONTAINER -->
   <main class="container-fluid px-5 my-4">
@@ -59,7 +77,9 @@
     <!-- Hero Banner Kutusu -->
     <section class="lk-hero-card mb-4">
       <p>
-        "Stil sahiplerinin paylaştığı kombinleri keşfet, orijinal parçaların linklerine ulaş, yorumunu ekle veya topluluğun önerdiği bütçe dostu muadilleri incele."
+        "Stil sahiplerinin paylaştığı kombinleri keşfet, orijinal parçaların</p>
+        <p>linklerine ulaş, yorumunu ekle veya topluluğun önerdiği bütçe dostu</p>
+        <p>muadilleri incele."
       </p>
     </section>
 
@@ -67,18 +87,22 @@
     <section class="mb-4">
       <div class="lk-filter-dropdown">
         <button class="lk-filter-btn" id="filterBtn">
-          <span>En Yeniler</span> <span>∨</span>
+          <p>En Yeniler</p> 
+          <img src="images/vector-filtre.svg" alt="Dropdown Icon" class="lk-filter-icon">
         </button>
+        <div class="lk-filter-btn2">
+      <button type="button" class="lk-filter-item">En Çok Yorum Alanlar</button>
+    </div>
       </div>
     </section>
 
     <!-- Kombin Kartları Grid (5'li Yan Yana Yerleşim) -->
-    <section class="row g-4" id="comboGrid">
+    <section class="row" id="comboGrid">
       
       <!-- Örnek Kart 1 -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
         <div class="lk-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Kombin" class="lk-card-img">
+          <img src="images/görsel.jpeg" alt="Kombin" class="lk-card-img">
           <a href="detail.html?id=1" class="lk-btn-card-incele">İncele</a>
         </div>
       </div>
@@ -86,7 +110,7 @@
       <!-- Örnek Kart 2 -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
         <div class="lk-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Kombin" class="lk-card-img">
+          <img src="images/görsel.jpeg" alt="Kombin" class="lk-card-img">
           <a href="detail.html?id=2" class="lk-btn-card-incele">İncele</a>
         </div>
       </div>
@@ -94,7 +118,7 @@
       <!-- Örnek Kart 3 -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
         <div class="lk-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Kombin" class="lk-card-img">
+          <img src="images/görsel.jpeg" alt="Kombin" class="lk-card-img">
           <a href="detail.html?id=3" class="lk-btn-card-incele">İncele</a>
         </div>
       </div>
@@ -102,7 +126,7 @@
       <!-- Örnek Kart 4 -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
         <div class="lk-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Kombin" class="lk-card-img">
+          <img src="images/görsel.jpeg" alt="Kombin" class="lk-card-img">
           <a href="detail.html?id=4" class="lk-btn-card-incele">İncele</a>
         </div>
       </div>
@@ -110,7 +134,7 @@
       <!-- Örnek Kart 5 -->
       <div class="col-12 col-sm-6 col-md-4 col-lg-2-4">
         <div class="lk-card">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Kombin" class="lk-card-img">
+          <img src="images/görsel.jpeg" alt="Kombin" class="lk-card-img">
           <a href="detail.html?id=5" class="lk-btn-card-incele">İncele</a>
         </div>
       </div>

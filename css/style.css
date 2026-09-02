@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================
    RESET
 ========================================================== */
@@ -171,13 +172,17 @@ body {
 }
 
 .lk-navbar {
-  background: linear-gradient(180deg, #f3e8ff 0%, #fae8ff 100%);
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+  background: linear-gradient(90deg, #FDFBFD 0%, rgba(199, 119, 235, 0.3019607843) 100%);
+  padding: 20px 0;
+  width: auto;
+  height: 102px;
+}
+.lk-navbar .container-fluid {
+  padding-top: 12px;
 }
 .lk-navbar .lk-brand-name {
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 2rem;
+  font-size: 35px;
   font-weight: 700;
   color: #111827;
 }
@@ -210,92 +215,217 @@ body {
 }
 .lk-navbar .lk-nav-profiles {
   font-family: "Rochester", cursive;
-  font-size: 2.2rem;
+  font-size: 30px;
   color: #111827;
   text-decoration: none;
   transition: all 0.25s ease-in-out;
+  position: relative;
 }
-.lk-navbar .lk-nav-profiles:hover {
-  color: #a855f7;
+.lk-navbar .lk-nav-profiles::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: black;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(2px);
 }
-.lk-navbar .lk-account-text {
+.lk-navbar .lk-nav-profiles.active::after, .lk-navbar .lk-nav-profiles:active::after, .lk-navbar .lk-nav-profiles:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lk-account-dropdown {
+  padding-right: 40px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible !important;
+}
+
+.hesap {
+  gap: 15px;
+}
+
+.hesap-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lk-account-icon {
+  padding-top: 8px;
+}
+
+.lk-account-text {
   font-family: "Rochester", cursive;
-  font-size: 1.8rem;
+  font-size: 25px;
   color: #111827;
 }
-.lk-navbar .lk-account-text span {
+.lk-account-text span {
   font-size: 1rem;
   font-family: "Merriweather Sans", sans-serif;
 }
-.lk-navbar .lk-avatar {
-  width: 40px;
-  height: 40px;
+
+.lk-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
 
+.logo-search {
+  gap: 50px;
+}
+.logo-search .lk-logo-div {
+  align-items: flex-end;
+}
+
+.search-profiller {
+  gap: 200px;
+}
+
+.lk-dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: -20px;
+  z-index: 9999;
+  width: 377px;
+  height: 223px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 40px;
+  justify-content: center;
+  display: none;
+  border-radius: 20px;
+}
+.lk-dropdown-menu .dropdown-icerik {
+  gap: 15px;
+}
+
 .lk-hero-card {
-  background: #fdfbfd;
-  border: 1px solid #f3e8ff;
-  border-radius: 12px;
+  background: rgba(199, 119, 235, 0.0509803922);
+  border-radius: 10px;
   padding: 24px 32px;
-  max-width: 650px;
+  height: 132px;
+  width: auto;
 }
 .lk-hero-card p {
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Enriqueta", serif;
   font-size: 1rem;
   color: #4b5563;
   line-height: 1.6;
   margin: 0;
 }
 
-.lk-filter-btn {
-  background: #f5e8ff;
-  color: #c084fc;
+.lk-filter-dropdown {
+  display: inline-block;
+  width: 188px;
+}
+.lk-filter-dropdown .lk-filter-btn {
+  width: 188px;
+  height: 50px;
+  background: rgba(248, 234, 255, 0.647);
   border: none;
-  padding: 8px 24px;
   border-radius: 12px;
-  font-family: "Merriweather Sans", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-family: "Enriqueta", serif;
+  font-size: 23px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
+  outline: none;
+  transition: border-radius 0.2s ease;
 }
-.lk-filter-btn:hover {
-  background: #eed5ff;
+.lk-filter-dropdown .lk-filter-btn p {
+  background: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.64;
+  display: inline-block;
+  margin: 0 0 0 20px;
+}
+.lk-filter-dropdown .lk-filter-btn img {
+  padding-top: 5px;
+  transition: transform 0.2s ease;
+}
+.lk-filter-dropdown .lk-filter-btn2 {
+  display: none;
+  position: static;
+  width: 100%;
+  background: rgba(248, 234, 255, 0.647);
+  border-radius: 0 0 12px 12px;
+  padding: 10px 0;
+}
+.lk-filter-dropdown .lk-filter-btn2 .lk-filter-item {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  text-align: left;
+  font-family: "Enriqueta", serif;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.64;
+  transition: opacity 0.2s ease;
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn {
+  border-radius: 12px 12px 0 0;
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn img {
+  transform: rotate(180deg);
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn2 {
+  display: block;
 }
 
 .lk-card {
   position: relative;
   border-radius: 0px;
   overflow: hidden;
+  background: rgba(198, 119, 235, 0.2549019608);
+  display: inline-block;
 }
 .lk-card .lk-card-img {
-  width: 100%;
-  height: 380px;
+  width: 213px;
+  height: 285px;
   object-fit: cover;
   display: block;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
 }
 .lk-card .lk-btn-card-incele {
+  width: 140px;
+  height: 35px;
   position: absolute;
   bottom: 16px;
   left: 16px;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(217, 217, 217, 0.6039215686);
   backdrop-filter: blur(4px);
-  color: #9333ea;
-  padding: 6px 28px;
-  border-radius: 8px;
-  font-family: "Merriweather Sans", sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
+  color: #752699;
+  border-radius: 10px;
+  font-family: "Enriqueta", serif;
+  font-size: 17px;
   text-decoration: none;
   transition: all 0.25s ease-in-out;
+  padding-left: 20px;
+  padding-top: 4px;
+  z-index: 2;
 }
 .lk-card .lk-btn-card-incele:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: #7e22ce;
+  background: white;
+  color: #752699;
 }
 
 @media (min-width: 992px) {
@@ -303,6 +433,307 @@ body {
     flex: 0 0 auto;
     width: 20%;
   }
+}
+body {
+  background: #ffffff;
+  color: #1e1b4b;
+  font-family: "Merriweather Sans", sans-serif;
+  margin: 0;
+}
+
+.lk-navbar {
+  background: linear-gradient(90deg, #FDFBFD 0%, rgba(199, 119, 235, 0.3019607843) 100%);
+  padding: 20px 0;
+  width: auto;
+  height: 102px;
+}
+.lk-navbar .container-fluid {
+  padding-top: 12px;
+}
+.lk-navbar .lk-brand-name {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+  color: #111827;
+}
+.lk-navbar .lk-brand-name span {
+  color: #a855f7;
+}
+.lk-navbar .lk-search-box {
+  position: relative;
+  width: 260px;
+}
+.lk-navbar .lk-search-box .lk-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+.lk-navbar .lk-search-box input {
+  width: 100%;
+  padding: 8px 16px 8px 36px;
+  border-radius: 50px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  outline: none;
+  font-size: 0.9rem;
+}
+.lk-navbar .lk-search-box input::placeholder {
+  color: #a1a1aa;
+}
+.lk-navbar .lk-nav-profiles {
+  font-family: "Rochester", cursive;
+  font-size: 30px;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+}
+.lk-navbar .lk-nav-profiles::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: black;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(2px);
+}
+.lk-navbar .lk-nav-profiles.active::after, .lk-navbar .lk-nav-profiles:active::after, .lk-navbar .lk-nav-profiles:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lk-account-dropdown {
+  padding-right: 40px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible !important;
+}
+
+.hesap {
+  gap: 15px;
+}
+
+.hesap-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lk-account-icon {
+  padding-top: 8px;
+}
+
+.lk-account-text {
+  font-family: "Rochester", cursive;
+  font-size: 25px;
+  color: #111827;
+}
+.lk-account-text span {
+  font-size: 1rem;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+.lk-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-search {
+  gap: 50px;
+}
+.logo-search .lk-logo-div {
+  align-items: flex-end;
+}
+
+.search-profiller {
+  gap: 200px;
+}
+
+.lk-dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: -20px;
+  z-index: 9999;
+  width: 377px;
+  height: 223px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 40px;
+  justify-content: center;
+  display: none;
+  border-radius: 20px;
+}
+.lk-dropdown-menu .dropdown-icerik {
+  gap: 15px;
+}
+
+.profiles-left {
+  padding: 0;
+  margin-top: 0;
+}
+
+.lk-profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.lk-profile-list .lk-profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lk-profile-list .lk-profile-item .lk-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+}
+.lk-profile-list .lk-profile-item .lk-profile-info .lk-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.lk-profile-list .lk-profile-item .lk-profile-info .lk-profile-name {
+  font-family: "Enriqueta", serif;
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+.lk-profile-list .lk-profile-item .lk-profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.lk-profile-list .lk-profile-item .lk-profile-actions .lk-btn-incele {
+  width: 79px;
+  height: 36px;
+  background: linear-gradient(90deg, #F2E0FB 0%, #FFFFFF 100%);
+  color: #752699;
+  padding: 8px 24px;
+  border-color: #FBF3FF;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Enriqueta", serif;
+}
+.lk-profile-list .lk-profile-item .lk-profile-actions .lk-btn-incele:hover {
+  background: #F2E0FB;
+}
+.lk-profile-list .lk-profile-item .lk-profile-actions .lk-btn-follow {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+.lk-profile-list .lk-profile-item .lk-profile-actions .lk-btn-follow img {
+  width: 32px;
+  height: 32px;
+}
+
+.profiles-geri-icon {
+  margin-bottom: 30px;
+}
+
+.profiles-right {
+  padding: 0;
+  margin-top: 44px;
+}
+
+.lk-brands-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 180px;
+}
+.lk-brands-section .lk-brands-header {
+  position: relative;
+  width: 289px;
+  height: 70px;
+  background: linear-gradient(90deg, #752699 0%, #0F50DE 100%);
+  border-radius: 16px;
+  padding: 14px 28px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.lk-brands-section .lk-brands-header h2 {
+  color: #E1B2F7;
+  font-size: 30px;
+  margin: 0;
+  font-weight: 400;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lk-brands-section .lk-brands-header .lk-brands-arrow {
+  position: absolute;
+  left: 50%;
+  bottom: -38px;
+  transform: translateX(-50%);
+  width: 25px;
+  height: 39px;
+}
+.lk-brands-section .lk-brands-connector {
+  margin: 8px 0;
+  color: #752699;
+  font-size: 18px;
+}
+.lk-brands-section .lk-brands-desc {
+  font-family: "Enriqueta", serif;
+  color: #555555;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+.lk-brands-section .lk-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 24px;
+}
+.lk-brands-section .lk-brands-grid .lk-brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+.lk-brands-section .lk-brands-grid .lk-brand-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lk-brand-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marka-logoları {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /*# sourceMappingURL=style.css.map */
