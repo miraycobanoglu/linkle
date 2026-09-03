@@ -1,21 +1,20 @@
 @import 'variables';
 
-// Global Arka Plan Gradient
 body {
   background: #ffffff;
   color: $text-primary;
   font-family: $font-main;
   margin: 0;
 }
-
-// NAVBAR 
 .lk-navbar {
   background: linear-gradient(90deg, #FDFBFD 0%, #C777EB4D 100%);
   padding: 20px 0;
   width: auto;
   height:102px;
+
 .container-fluid{
   padding-top:12px;
+  height:auto;
 }
   .lk-brand-name {
     font-family: $font-main;
@@ -28,10 +27,8 @@ body {
     }
   }
 
-  // Arama
   .lk-search-box {
     position: relative;
-    width: 260px;
 
     .lk-search-icon {
       position: absolute;
@@ -89,9 +86,9 @@ body {
 
   }
 
-  // Hesap Sağ Taraf
   .lk-account-dropdown{
     padding-right:40px;
+    padding-left:40px;
     cursor:pointer;
       position: relative;
   overflow: visible !important; // Kartın navbar dışına taşmasına izin verir
@@ -124,6 +121,7 @@ body {
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
   }
 
 .logo-search{
@@ -134,7 +132,7 @@ body {
   }
 }
 .search-profiller{
-  gap: 200px;
+  gap: 50px;
 }
 
 .lk-dropdown-menu{
@@ -158,7 +156,6 @@ border-radius: 20px;
     gap:15px;
   }
 }
-// HERO KART BÖLÜMÜ
 .lk-hero-card {
   background: #C777EB0D;
   border-radius: 10px;
@@ -166,12 +163,14 @@ border-radius: 20px;
   height: 132px;
   width:auto;
 
-  p {
+  .lk-hero-card-text {
     font-family: $font-heading;
     font-size: 1rem;
     color: #4b5563;
     line-height: 1.6;
     margin: 0;
+    width: 100%;
+    max-width:500px;
   }
 }
 
@@ -183,16 +182,17 @@ border-radius: 20px;
 
   // ANA FİLTRE BUTONU
   .lk-filter-btn {
-    width: 188px;
-    height: 50px;
+    width: 220px;
+    height: 40px;
     background: rgba(248, 234, 255, 0.647);
     border: none;
     border-radius: 12px;
     font-family: $font-heading;
-    font-size: 23px;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
     outline: none;
     transition: border-radius 0.2s ease;
@@ -208,14 +208,14 @@ border-radius: 20px;
     }
 
     img {
-      padding-top: 5px;
+      margin-right:20px;
       transition: transform 0.2s ease;
     }
   }
   .lk-filter-btn2 {
     display: none; 
     position: static; // Absolute kaldırıldı; açıldığında görselleri aşağı iter
-    width: 100%;
+     width: 220px;
     background: rgba(248, 234, 255, 0.647);
     border-radius: 0 0 12px 12px;
     padding: 10px 0;
@@ -252,26 +252,23 @@ border-radius: 20px;
     }
   }
 }
+  .lk-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 36px; 
 
-// KARTLAR VE İNCELE BUTONU
-.lk-card {
-  position: relative;
-  border-radius: 0px; 
-  overflow: hidden;
-   background: #c677eb41;
-   display: inline-block;
+  .lk-post-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #c677eb41;
 
-  .lk-card-img {
-    width:213px;
-    height: 285px;
-    object-fit: cover;
-    display: block;
-    mix-blend-mode: multiply; 
+    .lk-post-img {
+      object-fit: cover;
+       mix-blend-mode: multiply; 
     opacity: 0.8;
-
-  }
-
-  // Sol Alt Şeffaf İncele Butonu
+    }
+ }
   .lk-btn-card-incele {
     width:140px;
     height:35px;
@@ -297,10 +294,43 @@ border-radius: 20px;
   }
 }
 
-// Bootstrap Grid Custom 5'li Kolon Yapısı
-@media (min-width: 992px) {
-  .col-lg-2-4 {
-    flex: 0 0 auto;
-    width: 20%;
+@media (max-width: 1200px) {
+  .lk-profile-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .lk-profile-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hesap-logo{
+    display:none;
+  }
+  .lk-account-dropdown{
+    padding-right:30px;
+  }
+  .hesap{
+    margin-left:10px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .lk-profile-header {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 24px;
+    text-align: center;
+
+    .lk-profile-details {
+      align-items: center;
+      padding-top: 0;
+    }
+  }
+
+  .lk-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

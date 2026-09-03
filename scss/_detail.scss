@@ -1,0 +1,341 @@
+@import "variables";
+
+.lk-detail-page-wrapper {
+  max-width: 900px; 
+  margin: 0 auto; 
+  padding: 24px 16px;
+}
+.lk-detail-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+
+  .lk-detail-img-box {
+    margin-left:50px;
+    width: 315px;
+    height: 518px;
+    aspect-ratio: 3 / 4;
+    border: 5px solid #752699;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Ürünler Kutusu
+  .lk-products-card {
+    width:370px;
+    height:auto;
+
+    .lk-badge-primary {
+      background: linear-gradient(90deg, #752699 0%, #0F50DE 100%);
+      color: #E1B2F7;
+      width: 154px;
+      height:45px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      border-radius: 20px;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-family: $font-main;
+    }
+
+.lk-product-list-main {
+  .lk-product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .urunler {
+      display: grid;
+      grid-template-columns: 12px 140px 1fr 20px;
+      align-items: center;
+      gap: 12px;
+
+      .etiket-isaret {
+        width: 8px;
+        height: 8px;
+        object-fit: contain;
+      }
+
+      .etiket {
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000000;
+      }
+
+      .marka {
+        font-family: sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        color: #666666; // Görseldeki gri ton
+      }
+
+      .link-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        img {
+          width: 16px;
+          height: 16px;
+          opacity: 0.5;
+          transition: opacity 0.2s ease;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+  }
+}
+.lk-detail-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 32px;
+
+  .lk-section-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lk-section-header {
+    background: linear-gradient(90deg, #F2E0FB 0%, #FFFFFF 100%);
+    padding: 10px 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .lk-section-title {
+      font-family: $font-main; 
+      font-size: 16px;
+      color: #752699;
+      font-weight: 600;
+    }
+
+    .lk-btn-add-plus {
+      background: rgba(117, 38, 153, 0.15);
+      color: #752699;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: #752699;
+        color: #ffffff;
+
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+
+      img{
+        width:17px;
+        height:30px;
+      }
+
+    }
+  }
+
+  .lk-comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .lk-comment-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      .lk-avatar-sm {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .lk-comment-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        .lk-comment-user {
+          font-family: $font-heading;
+          font-size: 14px;
+          font-weight: 700;
+          color: #000000;
+          margin: 0;
+        }
+
+        .lk-comment-text {
+          font-size: 13px;
+          color: #333333;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .lk-comment-footer {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: 4px;
+
+          .lk-comment-meta {
+            font-size: 11px;
+            color: #888888;
+            cursor: pointer;
+
+            &:hover {
+              color: #752699;
+            }
+          }
+
+          .lk-btn-like {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: #aaaaaa;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+              color: #e74c3c;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .lk-dupe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .lk-dupe-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      .lk-avatar-sm {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .lk-dupe-content {
+        flex: 1;
+
+        .lk-dupe-user {
+          font-family: $font-heading;
+          font-size: 14px;
+          font-weight: 700;
+          color: #000000;
+          margin: 0 0 6px 0;
+        }
+
+        .lk-dupe-products {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          li {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #1a1a1a;
+
+            .etiket-isaret {
+              width:7px;
+              height:7px;
+              margin-right: 10px;
+            }
+
+            span {
+              min-width: 120px;
+            }
+
+            .lk-brand {
+              color: #00000086;
+              margin-left: 8px;
+            }
+
+            .lk-item-actions {
+              margin-left: auto;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+
+              img {
+                width: 14px;
+                height: 14px;
+                opacity: 0.7;
+                transition: opacity 0.2s ease;
+
+                &:hover {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+  }
+}
+@media (max-width: 992px) {
+  .lk-detail-page-wrapper {
+    padding: 16px;
+  }
+
+  .lk-detail-hero {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+
+    .lk-detail-img-box {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+
+  }
+  .lk-detail-bottom-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .lk-section-header{
+    width:600px;
+  }
+
+}
