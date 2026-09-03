@@ -173,25 +173,39 @@ body {
 
 .lk-navbar {
   background: linear-gradient(90deg, #FDFBFD 0%, rgba(199, 119, 235, 0.3019607843) 100%);
-  padding: 20px 0;
-  width: auto;
-  height: 102px;
+  padding: 16px 0;
+  width: 100%;
+  min-height: 80px;
 }
 .lk-navbar .container-fluid {
-  padding-top: 12px;
   height: auto;
 }
 .lk-navbar .lk-brand-name {
   font-family: "Merriweather Sans", sans-serif;
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 700;
   color: #111827;
 }
 .lk-navbar .lk-brand-name span {
   color: #a855f7;
 }
+.lk-navbar .logo-search {
+  gap: 32px;
+}
+.lk-navbar .logo-search .lk-logo-div {
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.lk-navbar .search-profiller {
+  gap: 24px;
+  position: relative;
+}
 .lk-navbar .lk-search-box {
   position: relative;
+  width: 100%;
+  max-width: 260px;
 }
 .lk-navbar .lk-search-box .lk-search-icon {
   position: absolute;
@@ -200,6 +214,9 @@ body {
   transform: translateY(-50%);
   font-size: 0.85rem;
   color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  z-index: 2;
 }
 .lk-navbar .lk-search-box input {
   width: 100%;
@@ -215,11 +232,12 @@ body {
 }
 .lk-navbar .lk-nav-profiles {
   font-family: "Rochester", cursive;
-  font-size: 30px;
+  font-size: 24px;
   color: #111827;
   text-decoration: none;
   transition: all 0.25s ease-in-out;
   position: relative;
+  white-space: nowrap;
 }
 .lk-navbar .lk-nav-profiles::after {
   content: "";
@@ -238,84 +256,171 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
-.lk-account-dropdown {
-  padding-right: 40px;
-  padding-left: 40px;
+.lk-navbar .lk-account-dropdown {
+  padding-left: 15px;
   cursor: pointer;
   position: relative;
-  overflow: visible !important;
 }
-
-.hesap {
-  gap: 15px;
+.lk-navbar .hesap {
+  gap: 12px;
 }
-
-.hesap-logo {
+.lk-navbar .hesap-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
-
-.lk-account-icon {
-  padding-top: 8px;
-}
-
-.lk-account-text {
+.lk-navbar .lk-account-text {
   font-family: "Rochester", cursive;
-  font-size: 25px;
+  font-size: 22px;
   color: #111827;
+  margin: 0;
 }
-.lk-account-text span {
-  font-size: 1rem;
-  font-family: "Merriweather Sans", sans-serif;
-}
-
-.lk-avatar {
-  width: 48px;
-  height: 48px;
+.lk-navbar .lk-avatar {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
 }
-
-.logo-search {
-  gap: 50px;
-}
-.logo-search .lk-logo-div {
-  align-items: flex-end;
-}
-
-.search-profiller {
-  gap: 50px;
-}
-
-.lk-dropdown-menu {
+.lk-navbar .lk-dropdown-menu {
   position: absolute;
+  top: calc(100% + 12px);
   right: 0;
-  margin-top: -20px;
   z-index: 9999;
-  width: 377px;
-  height: 223px;
+  width: 280px;
   background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding-left: 40px;
-  justify-content: center;
   display: none;
-  border-radius: 20px;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.lk-dropdown-menu .dropdown-icerik {
-  gap: 15px;
+.lk-navbar .lk-dropdown-menu.active {
+  display: flex;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik {
+  gap: 12px;
+  text-decoration: none;
+  color: #111827;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik img {
+  width: 24px;
+  height: 24px;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
 }
 
+@media (max-width: 992px) {
+  .lk-navbar .logo-search,
+  .lk-navbar .search-profiller {
+    gap: 20px;
+  }
+  .lk-navbar .hesap-logo {
+    display: none;
+  }
+  .lk-navbar .lk-nav-profiles {
+    font-size: 20px;
+  }
+  .lk-navbar .lk-brand-name {
+    font-size: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .lk-navbar {
+    padding: 12px 0;
+  }
+  .lk-navbar .lk-search-box {
+    max-width: 180px;
+  }
+  .lk-navbar .lk-dropdown-menu {
+    width: 240px;
+    right: 0;
+  }
+}
+@media (max-width: 576px) {
+  .lk-navbar {
+    padding: 10px 0;
+    min-height: 60px;
+  }
+  .lk-navbar .logo-search {
+    gap: 10px;
+  }
+  .lk-navbar .search-profiller {
+    gap: 12px;
+    position: relative;
+  }
+  .lk-navbar .lk-logo {
+    height: 26px;
+    width: auto;
+  }
+  .lk-navbar .lk-brand-name {
+    font-size: 20px;
+  }
+  .lk-navbar .lk-search-box {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border-radius: 50px;
+    background: #ffffff;
+    position: relative;
+    z-index: 5;
+  }
+  .lk-navbar .lk-search-box input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 6px 12px 6px 32px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .lk-navbar .lk-search-box .lk-search-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .lk-navbar .lk-search-box .lk-search-icon img {
+    width: 14px;
+    height: 14px;
+  }
+  .lk-navbar .lk-search-box:hover, .lk-navbar .lk-search-box:focus-within {
+    width: 130px;
+  }
+  .lk-navbar .lk-search-box:hover .lk-search-icon, .lk-navbar .lk-search-box:focus-within .lk-search-icon {
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  .lk-navbar .lk-search-box:hover input, .lk-navbar .lk-search-box:focus-within input {
+    opacity: 1;
+    cursor: text;
+  }
+  .lk-navbar .lk-nav-profiles {
+    font-size: 16px;
+    transition: opacity 0.2s ease;
+  }
+  .lk-navbar .lk-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .lk-navbar .search-profiller:has(.lk-search-box:focus-within) .lk-nav-profiles {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 .lk-hero-card {
   background: rgba(199, 119, 235, 0.0509803922);
   border-radius: 10px;
   padding: 24px 32px;
-  height: 132px;
-  width: auto;
+  min-height: 132px;
+  height: auto;
 }
 .lk-hero-card .lk-hero-card-text {
   font-family: "Enriqueta", serif;
@@ -327,6 +432,16 @@ body {
   max-width: 500px;
 }
 
+@media (max-width: 576px) {
+  .lk-hero-card {
+    padding: 16px 20px;
+    min-height: auto;
+  }
+  .lk-hero-card .lk-hero-card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
 .lk-filter-dropdown {
   display: inline-block;
   width: 188px;
@@ -648,6 +763,426 @@ body {
   .lk-brands-section {
     margin-left: 0;
     align-items: center;
+  }
+}
+body {
+  background: #ffffff;
+  color: #1e1b4b;
+  font-family: "Merriweather Sans", sans-serif;
+  margin: 0;
+}
+
+.lk-navbar {
+  background: linear-gradient(90deg, #FDFBFD 0%, rgba(199, 119, 235, 0.3019607843) 100%);
+  padding: 16px 0;
+  width: 100%;
+  min-height: 80px;
+}
+.lk-navbar .container-fluid {
+  height: auto;
+}
+.lk-navbar .lk-brand-name {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+}
+.lk-navbar .lk-brand-name span {
+  color: #a855f7;
+}
+.lk-navbar .logo-search {
+  gap: 32px;
+}
+.lk-navbar .logo-search .lk-logo-div {
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.lk-navbar .search-profiller {
+  gap: 24px;
+  position: relative;
+}
+.lk-navbar .lk-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+}
+.lk-navbar .lk-search-box .lk-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.lk-navbar .lk-search-box input {
+  width: 100%;
+  padding: 8px 16px 8px 36px;
+  border-radius: 50px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  outline: none;
+  font-size: 0.9rem;
+}
+.lk-navbar .lk-search-box input::placeholder {
+  color: #a1a1aa;
+}
+.lk-navbar .lk-nav-profiles {
+  font-family: "Rochester", cursive;
+  font-size: 24px;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  white-space: nowrap;
+}
+.lk-navbar .lk-nav-profiles::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: black;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(2px);
+}
+.lk-navbar .lk-nav-profiles.active::after, .lk-navbar .lk-nav-profiles:active::after, .lk-navbar .lk-nav-profiles:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+.lk-navbar .lk-account-dropdown {
+  padding-left: 15px;
+  cursor: pointer;
+  position: relative;
+}
+.lk-navbar .hesap {
+  gap: 12px;
+}
+.lk-navbar .hesap-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lk-navbar .lk-account-text {
+  font-family: "Rochester", cursive;
+  font-size: 22px;
+  color: #111827;
+  margin: 0;
+}
+.lk-navbar .lk-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.lk-navbar .lk-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 9999;
+  width: 280px;
+  background-color: #ffffff;
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.lk-navbar .lk-dropdown-menu.active {
+  display: flex;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik {
+  gap: 12px;
+  text-decoration: none;
+  color: #111827;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik img {
+  width: 24px;
+  height: 24px;
+}
+.lk-navbar .lk-dropdown-menu .dropdown-icerik p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .lk-navbar .logo-search,
+  .lk-navbar .search-profiller {
+    gap: 20px;
+  }
+  .lk-navbar .hesap-logo {
+    display: none;
+  }
+  .lk-navbar .lk-nav-profiles {
+    font-size: 20px;
+  }
+  .lk-navbar .lk-brand-name {
+    font-size: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .lk-navbar {
+    padding: 12px 0;
+  }
+  .lk-navbar .lk-search-box {
+    max-width: 180px;
+  }
+  .lk-navbar .lk-dropdown-menu {
+    width: 240px;
+    right: 0;
+  }
+}
+@media (max-width: 576px) {
+  .lk-navbar {
+    padding: 10px 0;
+    min-height: 60px;
+  }
+  .lk-navbar .logo-search {
+    gap: 10px;
+  }
+  .lk-navbar .search-profiller {
+    gap: 12px;
+    position: relative;
+  }
+  .lk-navbar .lk-logo {
+    height: 26px;
+    width: auto;
+  }
+  .lk-navbar .lk-brand-name {
+    font-size: 20px;
+  }
+  .lk-navbar .lk-search-box {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border-radius: 50px;
+    background: #ffffff;
+    position: relative;
+    z-index: 5;
+  }
+  .lk-navbar .lk-search-box input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 6px 12px 6px 32px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .lk-navbar .lk-search-box .lk-search-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .lk-navbar .lk-search-box .lk-search-icon img {
+    width: 14px;
+    height: 14px;
+  }
+  .lk-navbar .lk-search-box:hover, .lk-navbar .lk-search-box:focus-within {
+    width: 130px;
+  }
+  .lk-navbar .lk-search-box:hover .lk-search-icon, .lk-navbar .lk-search-box:focus-within .lk-search-icon {
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  .lk-navbar .lk-search-box:hover input, .lk-navbar .lk-search-box:focus-within input {
+    opacity: 1;
+    cursor: text;
+  }
+  .lk-navbar .lk-nav-profiles {
+    font-size: 16px;
+    transition: opacity 0.2s ease;
+  }
+  .lk-navbar .lk-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .lk-navbar .search-profiller:has(.lk-search-box:focus-within) .lk-nav-profiles {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+.lk-hero-card {
+  background: rgba(199, 119, 235, 0.0509803922);
+  border-radius: 10px;
+  padding: 24px 32px;
+  min-height: 132px;
+  height: auto;
+}
+.lk-hero-card .lk-hero-card-text {
+  font-family: "Enriqueta", serif;
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+@media (max-width: 576px) {
+  .lk-hero-card {
+    padding: 16px 20px;
+    min-height: auto;
+  }
+  .lk-hero-card .lk-hero-card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+.lk-filter-dropdown {
+  display: inline-block;
+  width: 188px;
+}
+.lk-filter-dropdown .lk-filter-btn {
+  width: 220px;
+  height: 40px;
+  background: rgba(248, 234, 255, 0.647);
+  border: none;
+  border-radius: 12px;
+  font-family: "Enriqueta", serif;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  outline: none;
+  transition: border-radius 0.2s ease;
+}
+.lk-filter-dropdown .lk-filter-btn p {
+  background: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.64;
+  display: inline-block;
+  margin: 0 0 0 20px;
+}
+.lk-filter-dropdown .lk-filter-btn img {
+  margin-right: 20px;
+  transition: transform 0.2s ease;
+}
+.lk-filter-dropdown .lk-filter-btn2 {
+  display: none;
+  position: static;
+  width: 220px;
+  background: rgba(248, 234, 255, 0.647);
+  border-radius: 0 0 12px 12px;
+  padding: 10px 0;
+}
+.lk-filter-dropdown .lk-filter-btn2 .lk-filter-item {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  text-align: left;
+  font-family: "Enriqueta", serif;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #752699 0%, #C777EB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.64;
+  transition: opacity 0.2s ease;
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn {
+  border-radius: 12px 12px 0 0;
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn img {
+  transform: rotate(180deg);
+}
+.lk-filter-dropdown:focus-within .lk-filter-btn2 {
+  display: block;
+}
+
+.lk-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 36px;
+}
+.lk-profile-grid .lk-post-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(198, 119, 235, 0.2549019608);
+}
+.lk-profile-grid .lk-post-card .lk-post-img {
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+}
+.lk-profile-grid .lk-btn-card-incele {
+  width: 140px;
+  height: 35px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(217, 217, 217, 0.6039215686);
+  backdrop-filter: blur(4px);
+  color: #752699;
+  border-radius: 10px;
+  font-family: "Enriqueta", serif;
+  font-size: 17px;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+  padding-left: 20px;
+  padding-top: 4px;
+  z-index: 2;
+}
+.lk-profile-grid .lk-btn-card-incele:hover {
+  background: white;
+  color: #752699;
+}
+
+@media (max-width: 1200px) {
+  .lk-profile-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .lk-profile-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .hesap-logo {
+    display: none;
+  }
+  .lk-account-dropdown {
+    padding-right: 30px;
+  }
+  .hesap {
+    margin-left: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .lk-profile-header {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    gap: 24px;
+    text-align: center;
+  }
+  .lk-profile-header .lk-profile-details {
+    align-items: center;
+    padding-top: 0;
+  }
+  .lk-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .lk-profile-header {

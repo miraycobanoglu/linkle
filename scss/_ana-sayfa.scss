@@ -8,17 +8,18 @@ body {
 }
 .lk-navbar {
   background: linear-gradient(90deg, #FDFBFD 0%, #C777EB4D 100%);
-  padding: 20px 0;
-  width: auto;
-  height:102px;
+  padding: 16px 0;
+  width: 100%;
+  min-height: 80px;
 
-.container-fluid{
-  padding-top:12px;
-  height:auto;
-}
+  .container-fluid {
+    height: auto;
+  }
+
+  // LOGO VE MARKA
   .lk-brand-name {
     font-family: $font-main;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 700;
     color: #111827;
 
@@ -27,8 +28,27 @@ body {
     }
   }
 
+  .logo-search {
+    gap: 32px;
+
+    .lk-logo-div {
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+  }
+
+  .search-profiller {
+    gap: 24px;
+    position: relative;
+  }
+
+  // ARAMA KUTUSU (Masaüstü Varsayılan)
   .lk-search-box {
     position: relative;
+    width: 100%;
+    max-width: 260px;
 
     .lk-search-icon {
       position: absolute;
@@ -37,6 +57,9 @@ body {
       transform: translateY(-50%);
       font-size: 0.85rem;
       color: #a1a1aa;
+      display: flex;
+      align-items: center;
+      z-index: 2;
     }
 
     input {
@@ -54,114 +77,248 @@ body {
     }
   }
 
-
+  // PROFİLLER LİNKİ
   .lk-nav-profiles {
     font-family: $font-accent;
-    font-size: 30px;
+    font-size: 24px;
     color: #111827;
     text-decoration: none;
     transition: $transition-fast;
-    position:relative;
+    position: relative;
+    white-space: nowrap;
 
-  &::after{
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px; 
-    background: black; 
-    border-radius: 2px; 
-    opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    transform: translateY(2px);
-  }
-&.active::after,
-  &:active::after,&:hover::after {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 1px; 
+      background: black; 
+      border-radius: 2px; 
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: translateY(2px);
+    }
 
-}
-
-  }
-
-  .lk-account-dropdown{
-    padding-right:40px;
-    padding-left:40px;
-    cursor:pointer;
-      position: relative;
-  overflow: visible !important; // Kartın navbar dışına taşmasına izin verir
-  }
-  .hesap{
-    gap: 15px;
-
-  }
-  .hesap-logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .lk-account-icon{
-    padding-top:8px;
-  }
-  .lk-account-text {
-    font-family: $font-accent;
-    font-size: 25px;
-    color: #111827;
-
-    span {
-      font-size: 1rem;
-      font-family: $font-main;
+    &.active::after,
+    &:active::after,
+    &:hover::after {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
+  // SAĞ HESAP & DROPDOWN ALANI
+  .lk-account-dropdown {
+    padding-left: 15px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .hesap {
+    gap: 12px;
+  }
+
+  .hesap-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lk-account-text {
+    font-family: $font-accent;
+    font-size: 22px;
+    color: #111827;
+    margin: 0;
+  }
+
   .lk-avatar {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
   }
 
-.logo-search{
-  gap:50px;
+  // DROPDOWN MENÜ
+  .lk-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 9999;
+    width: 280px;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
-  .lk-logo-div{
-    align-items: flex-end;
+    &.active {
+      display: flex;
+    }
+
+    .dropdown-icerik {
+      gap: 12px;
+      text-decoration: none;
+      color: #111827;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
   }
 }
-.search-profiller{
-  gap: 50px;
+
+// RESPONSIVE BREAKPOINT'LER
+
+@media (max-width: 992px) {
+  .lk-navbar {
+    .logo-search, 
+    .search-profiller {
+      gap: 20px;
+    }
+
+    .hesap-logo {
+      display: none;
+    }
+
+    .lk-nav-profiles {
+      font-size: 20px;
+    }
+
+    .lk-brand-name {
+      font-size: 26px;
+    }
+  }
 }
 
-.lk-dropdown-menu{
+@media (max-width: 768px) {
+  .lk-navbar {
+    padding: 12px 0;
 
-position: absolute;
-right:0;
-margin-top: -20px; 
-z-index: 9999;
-  width: 377px;
-  height: 223px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap:25px;
-  padding-left:40px;
-  justify-content: center;
-display:none;
-border-radius: 20px;
+    .lk-search-box {
+      max-width: 180px;
+    }
 
-  .dropdown-icerik{
-    gap:15px;
+    .lk-dropdown-menu {
+      width: 240px;
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .lk-navbar {
+    padding: 10px 0;
+    min-height: 60px;
+
+    .logo-search {
+      gap: 10px;
+    }
+
+    .search-profiller {
+      gap: 12px;
+      position: relative;
+    }
+
+    // LOGO ORANTISI
+    .lk-logo {
+      height: 26px;
+      width: auto;
+    }
+
+    .lk-brand-name {
+      font-size: 20px;
+    }
+
+    // MOBİL ARAMA BUTONU ORANTISI
+    .lk-search-box {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      border-radius: 50px;
+      background: #ffffff;
+      position: relative;
+      z-index: 5;
+
+      input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        padding: 6px 12px 6px 32px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+
+      .lk-search-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      &:hover,
+      &:focus-within {
+        width: 130px;
+
+        .lk-search-icon {
+          left: 10px;
+          transform: translateY(-50%);
+        }
+
+        input {
+          opacity: 1;
+          cursor: text;
+        }
+      }
+    }
+
+    // PROFİLLER METNİ
+    .lk-nav-profiles {
+      font-size: 16px;
+      transition: opacity 0.2s ease;
+    }
+
+    // AVATAR ORANTISI
+    .lk-avatar {
+      width: 34px;
+      height: 34px;
+    }
+
+    .search-profiller:has(.lk-search-box:focus-within) .lk-nav-profiles {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 .lk-hero-card {
   background: #C777EB0D;
   border-radius: 10px;
   padding: 24px 32px;
-  height: 132px;
-  width:auto;
+  
+  // YANLIŞ: height: 132px; (Metin taşınca kart genişleyemiyor)
+  // DOĞRU:
+  min-height: 132px; 
+  height: auto; 
 
   .lk-hero-card-text {
     font-family: $font-heading;
@@ -170,7 +327,20 @@ border-radius: 20px;
     line-height: 1.6;
     margin: 0;
     width: 100%;
-    max-width:500px;
+    max-width: 500px;
+  }
+}
+
+// MOBİL DÜZENLEMESİ
+@media (max-width: 576px) {
+  .lk-hero-card {
+    padding: 16px 20px; // Mobilde iç boşluğu azaltır
+    min-height: auto;
+
+    .lk-hero-card-text {
+      font-size: 0.9rem; // Mobilde yazıyı hafif küçülterek boyu dengeler
+      line-height: 1.5;
+    }
   }
 }
 

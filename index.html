@@ -28,16 +28,20 @@
         <span class="lk-brand-name">L<span>in</span>kle</span>
       </a>
 
-      <!-- Arama -->
-      <div class="search-profiller d-flex align-items-center">
+<!-- Arama ve Profiller Kapsayıcısı -->
+<div class="search-profiller d-flex align-items-center">
 
-        <div class="lk-search-box">
-          <span class="lk-search-icon"><img src="images/search.svg" alt="Search Icon"></span>
-          <input type="search" placeholder="Search..." id="searchInput">
-        </div>
-             <!-- Profiller -->
-        <a href="profiles.html" class="lk-nav-profiles">Profiller</a>
-      </div>
+  <div class="lk-search-box">
+    <input type="search" placeholder="Search..." id="searchInput">
+    <span class="lk-search-icon">
+      <img src="images/search.svg" alt="Search Icon">
+    </span>
+  </div>
+
+  <!-- Profiller Linki -->
+  <a href="profiles.html" class="lk-nav-profiles">Profiller</a>
+
+</div>
       </div>
 
 
@@ -45,19 +49,17 @@
       <!-- Sağ Menü: Profil -->
       <div class="lk-account-dropdown">
         <div class="hesap d-flex align-items-center cursor-pointer" id="dropdownToggle">
+
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar" class="lk-avatar">
+
           <div class="hesap-logo">
           <p class="lk-account-text">Hesap </p>
           <img class="lk-account-icon" src="images/Vector.svg" alt="Dropdown Icon">
           </div>
         </div>
-        
-      </div>
-    </div>
-  </header>
-          
-  <div class="lk-dropdown-menu" id="dropdownMenu">
-          <a href="#" class="dropdown-icerik d-flex align-items-center">
+
+          <div class="lk-dropdown-menu" id="dropdownMenu">
+          <a href="sayfam.html" class="dropdown-icerik d-flex align-items-center">
             <img src="images/account_circle.svg" alt="Avatar" class="dropdown-profil width:29 height:29">
             <p>Profil</p>
           </a>
@@ -70,6 +72,9 @@
             <p>Mod</p>
           </a>
     </div>
+      </div>
+  </header>
+          
 
   <!-- MAIN CONTAINER -->
   <main class="container-fluid px-5 my-4">
