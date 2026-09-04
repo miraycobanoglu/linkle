@@ -16,7 +16,6 @@ body {
     height: auto;
   }
 
-  // LOGO VE MARKA
   .lk-brand-name {
     font-family: $font-main;
     font-size: 32px;
@@ -44,7 +43,6 @@ body {
     position: relative;
   }
 
-  // ARAMA KUTUSU (Masaüstü Varsayılan)
   .lk-search-box {
     position: relative;
     width: 100%;
@@ -77,7 +75,6 @@ body {
     }
   }
 
-  // PROFİLLER LİNKİ
   .lk-nav-profiles {
     font-family: $font-accent;
     font-size: 24px;
@@ -108,8 +105,6 @@ body {
       transform: translateY(0);
     }
   }
-
-  // SAĞ HESAP & DROPDOWN ALANI
   .lk-account-dropdown {
     padding-left: 15px;
     cursor: pointer;
@@ -131,6 +126,10 @@ body {
     font-size: 22px;
     color: #111827;
     margin: 0;
+    line-height: 1;
+  }
+  .lk-account-icon{
+    margin-top:1px;
   }
 
   .lk-avatar {
@@ -141,7 +140,6 @@ body {
     flex-shrink: 0;
   }
 
-  // DROPDOWN MENÜ
   .lk-dropdown-menu {
     position: absolute;
     top: calc(100% + 12px);
@@ -151,13 +149,14 @@ body {
     background-color: #ffffff;
     display: none;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
     padding: 20px 24px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
     &.active {
       display: flex;
+      
     }
 
     .dropdown-icerik {
@@ -178,8 +177,6 @@ body {
     }
   }
 }
-
-// RESPONSIVE BREAKPOINT'LER
 
 @media (max-width: 992px) {
   .lk-navbar {
@@ -231,7 +228,6 @@ body {
       position: relative;
     }
 
-    // LOGO ORANTISI
     .lk-logo {
       height: 26px;
       width: auto;
@@ -241,7 +237,6 @@ body {
       font-size: 20px;
     }
 
-    // MOBİL ARAMA BUTONU ORANTISI
     .lk-search-box {
       width: 32px;
       height: 32px;
@@ -292,13 +287,11 @@ body {
       }
     }
 
-    // PROFİLLER METNİ
     .lk-nav-profiles {
       font-size: 16px;
       transition: opacity 0.2s ease;
     }
 
-    // AVATAR ORANTISI
     .lk-avatar {
       width: 34px;
       height: 34px;
@@ -314,9 +307,7 @@ body {
   background: #C777EB0D;
   border-radius: 10px;
   padding: 24px 32px;
-  
-  // YANLIŞ: height: 132px; (Metin taşınca kart genişleyemiyor)
-  // DOĞRU:
+
   min-height: 132px; 
   height: auto; 
 
@@ -331,26 +322,22 @@ body {
   }
 }
 
-// MOBİL DÜZENLEMESİ
 @media (max-width: 576px) {
   .lk-hero-card {
-    padding: 16px 20px; // Mobilde iç boşluğu azaltır
+    padding: 16px 20px;
     min-height: auto;
 
     .lk-hero-card-text {
-      font-size: 0.9rem; // Mobilde yazıyı hafif küçülterek boyu dengeler
+      font-size: 0.9rem; 
       line-height: 1.5;
     }
   }
 }
 
-//FİLTRE BUTONU
-
 .lk-filter-dropdown {
   display: inline-block;
   width: 188px; 
 
-  // ANA FİLTRE BUTONU
   .lk-filter-btn {
     width: 220px;
     height: 40px;
@@ -384,7 +371,7 @@ body {
   }
   .lk-filter-btn2 {
     display: none; 
-    position: static; // Absolute kaldırıldı; açıldığında görselleri aşağı iter
+    position: static;
      width: 220px;
     background: rgba(248, 234, 255, 0.647);
     border-radius: 0 0 12px 12px;
@@ -410,7 +397,7 @@ body {
   }
   &:focus-within {
     .lk-filter-btn {
-      border-radius: 12px 12px 0 0; // Alt köşeleri menüyle birleştirir
+      border-radius: 12px 12px 0 0;
 
       img {
         transform: rotate(180deg);

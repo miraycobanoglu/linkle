@@ -206,8 +206,127 @@
 
 </main>
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+<!-- 4.1 YORUM MODALI -->
+<div class="lk-modal-overlay" id="commentModal">
+  <div class="lk-modal-card">
+
+    <button type="button" class="lk-modal-close" id="btnCloseComments">&times;</button>
+
+    <div class="lk-modal-comment-list">
+      <div class="lk-comment-row">
+        <img src="images/profiller-img.png" alt="miraycobanoglu" class="lk-comment-avatar">
+        <div class="lk-comment-details">
+          <h6 class="lk-comment-user"><a href="#">miraycobanoglu</a></h6>
+          <p class="lk-comment-text">longchamp de kullanılabilirdi</p>
+          <div class="lk-comment-actions">
+            <span class="lk-btn-reply">Yanıtla</span>
+            <button class="lk-btn-like" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lk-comment-row">
+        <img src="images/profiller-img.png" alt="miraycobanoglu" class="lk-comment-avatar">
+        <div class="lk-comment-details">
+          <h6 class="lk-comment-user"><a href="#">miraycobanoglu</a></h6>
+          <p class="lk-comment-text">longchamp de kullanılabilirdi</p>
+          <div class="lk-comment-actions">
+            <span class="lk-btn-reply">Yanıtla</span>
+            <button class="lk-btn-like" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lk-comment-row">
+        <img src="images/profiller-img.png" alt="miraycobanoglu" class="lk-comment-avatar">
+        <div class="lk-comment-details">
+          <h6 class="lk-comment-user"><a href="#">miraycobanoglu</a></h6>
+          <p class="lk-comment-text">longchamp de kullanılabilirdi</p>
+          <div class="lk-comment-actions">
+            <span class="lk-btn-reply">Yanıtla</span>
+            <button class="lk-btn-like" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lk-modal-footer-input">
+      <div class="lk-input-wrapper">
+        <span class="lk-emoji">😊</span>
+        <input type="text" placeholder="Yorum ekle...">
+      </div>
+      <button type="button" class="lk-btn-share">Paylaş</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- 4.2 MUADİL SEÇİM MODALI -->
+<div class="lk-modal-overlay" id="dupModal">
+  <div class="lk-modal-card lk-dup-modal-card">
+
+    <button type="button" class="lk-modal-close" id="btnCloseDup" aria-label="Kapat">&times;</button>
+
+    <div class="lk-dup-header">
+      <span class="lk-badge-products">ürünler</span>
+    </div>
+
+    <div class="lk-dup-product-list">
+      <div class="lk-dup-product-row" data-product-id="prod-1">
+        <div class="lk-product-info">
+          <img class="etiket-isaret" src="images/etiket-isaret.svg" alt="Etiket">
+          <span class="lk-product-category">Çanta</span>
+          <span class="lk-brand">Goyard</span>
+          <a href="#" class="link-icon" target="_blank">
+            <img src="images/link.svg" alt="Link">
+          </a>
+        </div>
+        <button type="button" class="lk-btn-add-dup" data-product-id="prod-1">Muadil Ekle</button>
+      </div>
+
+      <div class="lk-dup-product-row" data-product-id="prod-2">
+        <div class="lk-product-info">
+          <img class="etiket-isaret" src="images/etiket-isaret.svg" alt="Etiket">
+          <span class="lk-product-category">Şapka</span>
+          <span class="lk-brand">alo</span>
+        </div>
+        <button type="button" class="lk-btn-add-dup" data-product-id="prod-2">Muadil Ekle</button>
+      </div>
+
+      <div class="lk-dup-product-row" data-product-id="prod-3">
+        <div class="lk-product-info">
+          <img class="etiket-isaret" src="images/etiket-isaret.svg" alt="Etiket">
+          <span class="lk-product-category">Sweatshirt</span>
+          <span class="lk-brand">Zara</span>
+          <a href="#" class="link-icon" target="_blank">
+            <img src="images/link.svg" alt="Link">
+          </a>
+        </div>
+        <button type="button" class="lk-btn-add-dup" data-product-id="prod-3">Muadil Ekle</button>
+      </div>
+
+      <div class="lk-dup-product-row" data-product-id="prod-4">
+        <div class="lk-product-info">
+          <img class="etiket-isaret" src="images/etiket-isaret.svg" alt="Etiket">
+          <span class="lk-product-category">Pantolon</span>
+          <span class="lk-brand">Mavi</span>
+          <a href="#" class="link-icon" target="_blank">
+            <img src="images/link.svg" alt="Link">
+          </a>
+        </div>
+        <button type="button" class="lk-btn-add-dup" data-product-id="prod-4">Muadil Ekle</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+  <script type="module" src="js/data.js"></script>
+  <script type="module" src="js/dropdown.js"></script>
+  <script type="module" src="js/modal.js"></script>
 
 </body>
 </html>
