@@ -1,0 +1,198 @@
+@import "variables";
+
+.lk-my-profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 0;
+
+  // Sol Taraf (Avatar)
+  .lk-my-avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+
+    .lk-my-avatar-border {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lk-my-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .lk-my-username {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111827;
+    }
+  }
+
+  // Sağ Taraf (Detaylar)
+  .lk-my-profile-details {
+    flex: 1;
+    min-width: 0; // Flex taşmasını önler
+
+    .lk-my-profile-top-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+
+      .lk-my-profile-name {
+        font-family: $font-heading; // Merriweather / Serif font
+        font-size: 28px;
+        margin: 0;
+        color: #111827;
+      }
+
+      .lk-my-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        // Profili Düzenle Butonu (Çerçeveli Mor)
+        .lk-btn-outline-purple {
+          border: 1px solid #d8b4fe;
+          color: #7e22ce;
+          background-color: transparent;
+          border-radius: 12px;
+          padding: 8px 18px;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: #f3e8ff;
+          }
+        }
+
+        // Paylaşım Yap Butonu (Dolu Açık Mor)
+        .lk-btn-purple {
+          background: #f3e8ff;
+          color: #7e22ce;
+          border: none;
+          border-radius: 12px;
+          padding: 8px 18px;
+          font-size: 14px;
+          font-weight: 600;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: #e9d5ff;
+          }
+        }
+      }
+    }
+
+    // İstatistikler
+    .lk-my-stats-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 20px;
+
+      .lk-my-stat-item {
+        font-size: 14px;
+        color: #4b5563;
+        font-family: $font-heading;
+
+        strong {
+          color: #111827;
+          font-weight: 700;
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .lk-my-social-row {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // Mobil Ekran Uyumluluğu (576px Altı)
+  @media (max-width: 575.98px) {
+    gap: 16px;
+
+    .lk-my-avatar-wrapper {
+      width: 80px;
+
+      .lk-my-avatar-border {
+        width: 76px;
+        height: 76px;
+      }
+
+      .lk-my-username {
+        font-size: 12px;
+      }
+    }
+
+    .lk-my-profile-details {
+      .lk-my-profile-top-row {
+        gap: 12px;
+
+        .lk-my-profile-name {
+          font-size: 20px;
+        }
+
+        .lk-my-actions {
+          gap: 8px;
+
+          button {
+            padding: 6px 12px;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .lk-my-stats-row {
+        gap: 12px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+// Gönderi Kartları CSS
+.lk-my-posts-grid {
+  .lk-my-post-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+
+    .lk-my-post-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lk-btn-card-inspect {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      border: none;
+      border-radius: 20px;
+      padding: 6px 20px;
+      font-size: 13px;
+      color: #111827;
+      font-weight: 500;
+    }
+  }
+}

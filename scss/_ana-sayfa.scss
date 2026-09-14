@@ -117,8 +117,8 @@ body {
 
   .hesap-logo {
     display: flex;
-    align-items: center;
     gap: 8px;
+    align-items: center;
   }
 
   .lk-account-text {
@@ -129,7 +129,9 @@ body {
     line-height: 1;
   }
   .lk-account-icon{
-    margin-top:1px;
+    width:12px;
+    height:6px;
+    margin-top:10px;
   }
 
   .lk-avatar {
@@ -142,7 +144,7 @@ body {
 
   .lk-dropdown-menu {
     position: absolute;
-    top: calc(100% + 12px);
+    top: calc(100% + 3px);
     right: 0;
     z-index: 9999;
     width: 280px;

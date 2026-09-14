@@ -266,8 +266,8 @@ body {
 }
 .lk-navbar .hesap-logo {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 .lk-navbar .lk-account-text {
   font-family: "Rochester", cursive;
@@ -277,7 +277,9 @@ body {
   line-height: 1;
 }
 .lk-navbar .lk-account-icon {
-  margin-top: 1px;
+  width: 12px;
+  height: 6px;
+  margin-top: 10px;
 }
 .lk-navbar .lk-avatar {
   width: 44px;
@@ -288,7 +290,7 @@ body {
 }
 .lk-navbar .lk-dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 3px);
   right: 0;
   z-index: 9999;
   width: 280px;
@@ -665,10 +667,18 @@ body {
   height: 32px;
 }
 
+.profiles-geri {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
 .profiles-geri-icon {
   margin-bottom: 30px;
   margin-left: 40px;
   margin-top: 30px;
+  display: block;
 }
 
 .profiles-right {
@@ -684,19 +694,20 @@ body {
 }
 .lk-brands-section .lk-brands-header {
   position: relative;
-  width: 289px;
-  height: 60px;
+  width: 200px;
+  height: 50px;
   background: linear-gradient(90deg, #752699 0%, #0F50DE 100%);
   border-radius: 16px;
-  padding: 14px 28px;
   display: inline-block;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .lk-brands-section .lk-brands-header h2 {
   color: #E1B2F7;
-  font-size: 30px;
+  font-size: 20px;
   margin: 0;
-  font-weight: 400;
   font-family: sans-serif;
   display: flex;
   align-items: center;
@@ -718,7 +729,7 @@ body {
 .lk-brands-section .lk-brands-desc {
   font-family: "Enriqueta", serif;
   color: #555555;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.5;
   text-align: center;
 }
@@ -727,18 +738,19 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px 40px;
   width: 100%;
-  max-width: 320px;
-  margin-top: 24px;
+  max-width: 300px;
+  margin-top: 25px;
 }
 .lk-brands-section .lk-brands-grid .lk-brand-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
 }
 .lk-brands-section .lk-brands-grid .lk-brand-card img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80px !important;
+  max-height: 35px !important;
+  width: auto !important;
+  height: auto !important;
   object-fit: contain;
 }
 
@@ -872,8 +884,8 @@ body {
 }
 .lk-navbar .hesap-logo {
   display: flex;
-  align-items: center;
   gap: 8px;
+  align-items: center;
 }
 .lk-navbar .lk-account-text {
   font-family: "Rochester", cursive;
@@ -883,7 +895,9 @@ body {
   line-height: 1;
 }
 .lk-navbar .lk-account-icon {
-  margin-top: 1px;
+  width: 12px;
+  height: 6px;
+  margin-top: 10px;
 }
 .lk-navbar .lk-avatar {
   width: 44px;
@@ -894,7 +908,7 @@ body {
 }
 .lk-navbar .lk-dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 3px);
   right: 0;
   z-index: 9999;
   width: 280px;
@@ -1905,6 +1919,260 @@ body {
 }
 .lk-dup-product-list .lk-dup-product-row .lk-btn-add-dup:hover {
   color: #632BB8;
+}
+
+.lk-add-dupe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10010;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.lk-add-dupe-overlay.active {
+  display: flex !important;
+}
+
+.lk-add-dupe-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+.lk-add-dupe-modal .etiket {
+  gap: 10px;
+}
+.lk-add-dupe-modal .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.lk-add-dupe-modal .form-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #6b21a8;
+  margin-bottom: 8px;
+}
+.lk-add-dupe-modal .form-group .lk-input-field {
+  width: 100%;
+  height: 46px;
+  padding: 10px 16px;
+  border: 1px solid #d8b4fe;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.lk-add-dupe-modal .form-group .lk-input-field::placeholder {
+  color: #d8b4fe;
+  font-weight: 400;
+}
+.lk-add-dupe-modal .form-group .lk-input-field:focus {
+  border-color: #9333ea;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+}
+.lk-add-dupe-modal .form-group .lk-upload-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.lk-add-dupe-modal .form-group .lk-upload-field img {
+  width: 16px;
+  height: 16px;
+}
+.lk-add-dupe-modal .form-group .lk-upload-field span {
+  font-size: 14px;
+  color: #d8b4fe;
+}
+.lk-add-dupe-modal .btn-submit-dupe {
+  width: 120px;
+  height: 42px;
+  background: linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%);
+  color: #581c87;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.lk-add-dupe-modal .btn-submit-dupe:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.lk-my-profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 0;
+}
+.lk-my-profile-header .lk-my-avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.lk-my-profile-header .lk-my-avatar-wrapper .lk-my-avatar-border {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lk-my-profile-header .lk-my-avatar-wrapper .lk-my-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.lk-my-profile-header .lk-my-avatar-wrapper .lk-my-username {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+.lk-my-profile-header .lk-my-profile-details {
+  flex: 1;
+  min-width: 0;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-profile-name {
+  font-family: "Enriqueta", serif;
+  font-size: 28px;
+  margin: 0;
+  color: #111827;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions .lk-btn-outline-purple {
+  border: 1px solid #d8b4fe;
+  color: #7e22ce;
+  background-color: transparent;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions .lk-btn-outline-purple:hover {
+  background-color: #f3e8ff;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions .lk-btn-purple {
+  background: #f3e8ff;
+  color: #7e22ce;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions .lk-btn-purple:hover {
+  background: #e9d5ff;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 20px;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-stats-row .lk-my-stat-item {
+  font-size: 14px;
+  color: #4b5563;
+  font-family: "Enriqueta", serif;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-stats-row .lk-my-stat-item strong {
+  color: #111827;
+  font-weight: 700;
+  margin-right: 4px;
+}
+.lk-my-profile-header .lk-my-profile-details .lk-my-social-row {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 575.98px) {
+  .lk-my-profile-header {
+    gap: 16px;
+  }
+  .lk-my-profile-header .lk-my-avatar-wrapper {
+    width: 80px;
+  }
+  .lk-my-profile-header .lk-my-avatar-wrapper .lk-my-avatar-border {
+    width: 76px;
+    height: 76px;
+  }
+  .lk-my-profile-header .lk-my-avatar-wrapper .lk-my-username {
+    font-size: 12px;
+  }
+  .lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row {
+    gap: 12px;
+  }
+  .lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-profile-name {
+    font-size: 20px;
+  }
+  .lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions {
+    gap: 8px;
+  }
+  .lk-my-profile-header .lk-my-profile-details .lk-my-profile-top-row .lk-my-actions button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .lk-my-profile-header .lk-my-profile-details .lk-my-stats-row {
+    gap: 12px;
+    font-size: 12px;
+  }
+}
+
+.lk-my-posts-grid .lk-my-post-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.lk-my-posts-grid .lk-my-post-card .lk-my-post-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lk-my-posts-grid .lk-my-post-card .lk-btn-card-inspect {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  border: none;
+  border-radius: 20px;
+  padding: 6px 20px;
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=style.css.map */

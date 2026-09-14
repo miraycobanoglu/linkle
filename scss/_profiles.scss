@@ -84,10 +84,17 @@
     }
   }
 }
+.profiles-geri{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
 .profiles-geri-icon{
     margin-bottom: 30px;
     margin-left:40px;
     margin-top:30px;
+    display: block;
 }
 
 .profiles-right{
@@ -102,19 +109,20 @@
 
   .lk-brands-header {
     position:relative;
-    width:289px;
-    height:60px;
+    width:200px;
+    height:50px;
     background: linear-gradient(90deg, #752699 0%, #0F50DE 100%);
     border-radius: 16px;
-    padding: 14px 28px;
     display: inline-block;
     margin-bottom:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     h2 {
       color:#E1B2F7;
-      font-size: 30px;
+      font-size: 20px;
       margin: 0;
-      font-weight: 400;
       font-family: sans-serif;
       display: flex;
       align-items: center;
@@ -138,7 +146,7 @@
   .lk-brands-desc {
     font-family: $font-heading; 
     color: #555555;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 1.5;
     text-align: center;
   }
@@ -148,19 +156,20 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px 40px;
     width: 100%;
-    max-width: 320px;
-    margin-top: 24px;
+    max-width: 300px;
+    margin-top: 25px;
 
     .lk-brand-card {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 60px;
 
       img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+      max-width: 80px !important;  // İstediğin boyuta göre 60px - 100px arası değiştirebilirsin
+    max-height: 35px !important; // Yüksekliği sınırlar
+    width: auto !important;      // Oran korur
+    height: auto !important;
+    object-fit: contain;
       }
     }
   }
@@ -193,3 +202,4 @@
     align-items: center;
   }
 }
+

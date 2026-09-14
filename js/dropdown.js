@@ -1,5 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", () => {
+export function dropdown(){
   const dropdownToggle = document.getElementById("dropdownToggle");
   const dropdownMenu = document.getElementById("dropdownMenu");
 
@@ -14,4 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   }
-});
+}
+
