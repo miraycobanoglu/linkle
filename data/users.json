@@ -1,0 +1,44 @@
+[
+  {
+    "userId": "user-1",
+    "name": "Damla Altun",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 1250,
+    "isFollowing": false
+  },
+  {
+    "userId": "user-2",
+    "name": "Ece Sucuoğlu",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 3400,
+    "isFollowing": true
+  },
+  {
+    "userId": "user-3",
+    "name": "Duygu Özaslan",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 8900,
+    "isFollowing": false
+  },
+  {
+    "userId": "user-4",
+    "name": "Danla Bilic",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 15200,
+    "isFollowing": false
+  },
+  {
+    "userId": "user-5",
+    "name": "Ala Tokel",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 5100,
+    "isFollowing": false
+  },
+  {
+    "userId": "user-6",
+    "name": "Cansu Akın",
+    "avatar": "images/profiller-img.png",
+    "followerCount": 2700,
+    "isFollowing": false
+  }
+]

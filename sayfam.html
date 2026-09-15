@@ -44,7 +44,7 @@
 
           <div class="hesap-logo">
           <p class="lk-account-text">Hesap </p>
-          <img class="lk-account-icon" src="images/Vector.svg" alt="Dropdown Icon">
+          <img class="lk-account-icon lk-my-avatar" id="hesap-profile" src="images/Vector.svg" alt="Dropdown Icon">
           </div>
         </div>
 
@@ -98,13 +98,13 @@
       <!-- İstatistikler ve Sosyal Medya -->
       <div class="lk-my-stats-row">
         <div class="lk-my-stat-item">
-          <strong>570</strong> <span>paylaşım</span>
+          <strong class="paylasim-sayi">570</strong> <span>paylaşım</span>
         </div>
         <div class="lk-my-stat-item">
-          <strong>13.5k</strong> <span>followers</span>
+          <strong class="takipci-sayi">13.5k</strong> <span>followers</span>
         </div>
         <div class="lk-my-stat-item">
-          <strong>280</strong> <span>following</span>
+          <strong class="takip-edilen-sayi">280</strong> <span>following</span>
         </div>
       </div>
 
@@ -122,40 +122,131 @@
   <section class="lk-my-posts-grid my-5">
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3">
       
-      <!-- Örnek Gönderi Kartı (Loop ile çoğaltılabilir) -->
+      <!--Gönderiler -->
       <div class="col">
         <div class="lk-my-post-card">
-          <img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img">
+          <a href="detail.html"><img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img"></a>
         </div>
       </div>
 
       <div class="col">
         <div class="lk-my-post-card">
-          <img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img">
+          <a href="detail.html"><img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img"></a>
         </div>
       </div>
 
       <div class="col">
         <div class="lk-my-post-card">
-          <img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img">
+          <a href="detail.html"><img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img"></a>
         </div>
       </div>
 
       <div class="col">
         <div class="lk-my-post-card">
-          <img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img">
+          <a href="detail.html"><img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img"></a>
         </div>
       </div>
 
       <div class="col">
         <div class="lk-my-post-card">
-          <img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img">
+         <a href="detail.html"><img src="images/görsel.jpeg" alt="Gönderi" class="lk-my-post-img"></a>
         </div>
       </div>
 
     </div>
   </section>
 </main>
+
+<!--PAYLAŞIM YAP MODALI -->
+<div class="lk-create-post-overlay" id="createPostModal">
+  <div class="lk-create-post-modal">
+    
+    <!-- Kapatma Butonu -->
+    <button type="button" class="btn-close lk-modal-close-btn" id="btnCloseCreatePost" aria-label="Kapat"></button>
+
+    <form id="formCreatePost">
+      
+      <!-- Etiket-->
+      <div class="form-group">
+        <label for="postTagInput">Etiket</label>
+        <div class="input-with-icon">
+          <img src="images/tag.svg" alt="Etiket" class="input-icon">
+          <input 
+            type="text" 
+            id="postTagInput" 
+            name="tagCategory" 
+            class="lk-input-field" 
+            placeholder="Ürün başlığı"
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Marka -->
+      <div class="form-group">
+        <label for="postBrandInput">Marka</label>
+        <input 
+          type="text" 
+          id="postBrandInput" 
+          name="brand" 
+          class="lk-input-field" 
+          placeholder="Muadil Marka"
+        >
+      </div>
+
+      <!-- Link -->
+      <div class="form-group">
+        <label for="postLinkInput">Link</label>
+        <input 
+          type="url" 
+          id="postLinkInput" 
+          name="productLink" 
+          class="lk-input-field" 
+          placeholder="Muadilin Linki"
+        >
+      </div>
+
+      <!-- Görsel Yükleme -->
+      <div class="form-group">
+        <label>Görsel</label>
+        <div class="lk-input-field d-flex align-items-center">
+          <input type="file" id="postImageUpload" name="postImage" accept="image/*" hidden>
+          <label for="postImageUpload" class="lk-upload-field m-0">
+            <img src="images/upload.svg" alt="Yükle">
+            <span id="uploadFileName">Yükle</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Gönder/Ekle Butonu -->
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn-submit-post">Ekle</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- 5.1.1 ONAYLANDI MODALI -->
+<div class="lk-status-overlay" id="statusModal">
+  <div class="lk-status-modal">
+    
+    <!-- Yüklenme ve Onay İkon Alanı -->
+    <div class="lk-status-icon-wrapper" id="statusIconWrapper">
+      <!-- Dönme Animasyonlu Çember -->
+      <div class="lk-spinner"></div>
+      
+      <!-- Yeşil Tik İkonu (Başlangıçta Gizli) -->
+      <svg class="lk-check-icon d-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <!-- Durum Metni -->
+    <p class="lk-status-text" id="statusText">" Paylaşım Yükleniyor... "</p>
+
+  </div>
+</div>
 
 
     <script type="module" src="js/app.js"></script>

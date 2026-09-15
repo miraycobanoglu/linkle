@@ -80,7 +80,7 @@
   <section class="lk-detail-hero">
     <!-- Sol: Görsel -->
     <div class="lk-detail-img-box">
-      <img src="images/görsel.jpeg" alt="Kombin">
+      <img src="" alt="Kombin">
     </div>
 
     <!-- Ürünler Kutusu -->
@@ -143,7 +143,7 @@
   <div class="lk-section-box">
     <div class="lk-section-header">
       <span class="lk-section-title">Muadil Önerileri</span>
-      <button class="lk-btn-add-plus" id="btnOpenDupes" aria-label="Muadil Ekle"><img src="images/add-icon.svg" alt="Ekle"></button>
+      <button class="lk-btn-add-plus" id="btnOpenDupModal" aria-label="Muadil Ekle"><img src="images/add-icon.svg" alt="Ekle"></button>
     </div>
     <div class="lk-dupe-list">
       <div class="lk-dupe-item">
@@ -340,18 +340,18 @@
     <form id="formAddDupe">
       <div class="form-group">
         <label>Marka</label>
-        <input type="text" class="lk-input-field" placeholder="Muadil Marka..">
+        <input type="text" class="lk-input-field" placeholder="Muadil Marka.." required>
       </div>
 
       <div class="form-group">
         <label>Link</label>
-        <input type="url" class="lk-input-field" placeholder="Muadil Link..">
+        <input type="url" class="lk-input-field" placeholder="Muadil Link.." >
       </div>
 
       <div class="form-group">
         <label>Görsel</label>
         <div class="lk-input-field d-flex align-items-center">
-          <input type="file" id="fileUpload" hidden>
+          <input type="file" id="fileUpload" accept="image/*" hidden>
           <label for="fileUpload" class="lk-upload-field m-0">
             <img src="images/upload.svg" alt="Yükle">
             <span>Yükle</span>

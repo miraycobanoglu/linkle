@@ -124,6 +124,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width:100%;
 
     .lk-section-title {
       font-family: $font-main; 
@@ -729,4 +730,9 @@
       transform: translateY(-1px);
     }
   }
+}
+#dupModal.active {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }

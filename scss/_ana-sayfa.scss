@@ -429,8 +429,8 @@ body {
     }
  }
   .lk-btn-card-incele {
-    width:140px;
-    height:35px;
+    width:100px;
+    height:30px;
     position: absolute;
     bottom: 16px;
     left: 16px;
@@ -442,9 +442,10 @@ body {
     font-size: 17px;
     text-decoration: none;
     transition: $transition-fast;
-    padding-left:20px;
-    padding-top:4px;
     z-index:2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       background: white;

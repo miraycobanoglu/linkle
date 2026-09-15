@@ -6,7 +6,7 @@
   gap: 40px;
   padding: 20px 0;
 
-  // Sol Taraf (Avatar)
+  // Sol Taraf
   .lk-my-avatar-wrapper {
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
   // Sağ Taraf (Detaylar)
   .lk-my-profile-details {
     flex: 1;
-    min-width: 0; // Flex taşmasını önler
+    min-width: 0;
 
     .lk-my-profile-top-row {
       display: flex;
@@ -52,7 +52,7 @@
       flex-wrap: wrap;
 
       .lk-my-profile-name {
-        font-family: $font-heading; // Merriweather / Serif font
+        font-family: $font-heading;
         font-size: 28px;
         margin: 0;
         color: #111827;
@@ -63,7 +63,7 @@
         align-items: center;
         gap: 12px;
 
-        // Profili Düzenle Butonu (Çerçeveli Mor)
+        // Profili düzenle butonu
         .lk-btn-outline-purple {
           border: 1px solid #d8b4fe;
           color: #7e22ce;
@@ -97,7 +97,7 @@
       }
     }
 
-    // İstatistikler
+  //takip edilen takipçi sayıları
     .lk-my-stats-row {
       display: flex;
       align-items: center;
@@ -123,7 +123,7 @@
     }
   }
 
-  // Mobil Ekran Uyumluluğu (576px Altı)
+  // Mobil
   @media (max-width: 575.98px) {
     gap: 16px;
 
@@ -166,13 +166,36 @@
   }
 }
 
-// Gönderi Kartları CSS
+// Gönderiler
 .lk-my-posts-grid {
   .lk-my-post-card {
     position: relative;
     border-radius: 4px;
     overflow: hidden;
     aspect-ratio: 3 / 4;
+
+   &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0%; // Başlangıçta yüksekliği 0 (gizli)
+      background: linear-gradient(to top, #c677eb57 0%, #c677eb0f 100%);
+      transition: height 0.40s ease-in-out;
+      pointer-events: none; // Tıklamayı engellememesi için
+    }
+
+    // Hover (Üzerine Gelindiğinde) Durumu
+    &:hover {
+      .lk-my-post-img {
+        transform: scale(1.04); // Görseli hafifçe büyütür
+      }
+
+      &::after {
+        height: 80%; // Yüksekliği kartın %60'ına kadar yumuşakça yükseltir
+      }
+    }
 
     .lk-my-post-img {
       width: 100%;
@@ -194,5 +217,212 @@
       color: #111827;
       font-weight: 500;
     }
+  }
+}
+// 5.1 Paylaşım Yap Modal Katmanı
+.lk-create-post-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10020; // En üst katmanda durması için
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex !important;
+  }
+}
+
+// Modal Kartı
+.lk-create-post-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  position: relative;
+
+  .lk-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .form-group {
+    margin-bottom: 22px;
+    text-align: left;
+
+    label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #6b21a8; // Mor Başlık Rengi
+      margin-bottom: 8px;
+    }
+
+    // Etiket İçin İkonlu Input Kapsayıcısı
+    .input-with-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-icon {
+        position: absolute;
+        left: 14px;
+        width: 18px;
+        height: 18px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .lk-input-field {
+        padding-left: 42px; // İkon için sol girinti
+      }
+    }
+
+    // İnce Mor Çerçeveli Input'lar
+    .lk-input-field {
+      width: 100%;
+      height: 48px;
+      padding: 10px 16px;
+      border: 1px solid #e9d5ff;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #111827;
+      background-color: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &::placeholder {
+        color: #d8b4fe;
+        font-weight: 400;
+      }
+
+      &:focus {
+        border-color: #9333ea;
+        box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+      }
+    }
+
+    // Görsel Yükleme Alanı
+    .lk-upload-field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+
+      span {
+        font-size: 14px;
+        color: #d8b4fe;
+      }
+    }
+  }
+
+  // Ekle Butonu
+  .btn-submit-post {
+    width: 130px;
+    height: 44px;
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    color: #581c87;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+  }
+}
+// Status Modal Katmanı
+.lk-status-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10030; // Tüm modalların en üstünde
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex !important;
+  }
+}
+
+// Modal Kartı
+.lk-status-modal {
+  background: #ffffff;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .lk-status-icon-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // DÖNEN ÇEMBER (SPINNER)
+  .lk-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3e8ff; // Açık mor sabit çember
+    border-top: 4px solid #22c55e; // Dönen yeşil kısım
+    border-radius: 50%;
+    animation: spin 1s linear infinite; // Kesintisiz dönme animasyonu
+  }
+
+  // YEŞİL TİK İKONU
+  .lk-check-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lk-status-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+}
+
+// 360 DERECE DÖNME ANİMASYONU
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

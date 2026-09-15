@@ -1,0 +1,182 @@
+[
+  {
+    "postId": "post-101",
+    "userId": "user-1",
+    "imageUrl": "images/görsel.jpeg",
+    "createdAt": "2026-09-10T14:30:00Z",
+    "commentCount": 24,
+    "products" : [
+      { "category": "Çanta", "brand": "Goyard", "link": "#" },
+      { "category": "Şapka", "brand": "Alo", "link": "#" },
+      { "category": "Sweatshirt", "brand": "Zara", "link": "#" },
+      { "category": "Pantolon", "brand": "Mavi", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "ece_sucuoğlu",
+        "avatar": "images/profiller-img.png",
+        "text": "Renk uyumu harika olmuş, çanta kombinle çok iyi patlamış!"
+      },
+      {
+        "user": "duygu_ozaslan",
+        "avatar": "images/profiller-img.png",
+        "text": "Longchamp de alternatif olarak çok güzel durabilirdi."
+      }
+    ],
+    "dupes": [
+      {
+        "user": "miraycobanoglu",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Çanta", "brand": "Zara", "link": "#" },
+          { "category": "Pantolon", "brand": "TrendyolMilla", "link": "#" }
+        ]
+      }
+    ]
+  },
+    {
+    "postId": "post-106",
+    "userId": "user-1",
+    "imageUrl": "images/görsel.jpeg",
+    "createdAt": "2026-09-10T14:30:00Z",
+    "commentCount": 38,
+    "products" : [
+      { "category": "Çanta", "brand": "Goyard", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "esraa",
+        "avatar": "images/profiller-img.png",
+        "text": "Renk uyumu harika olmuş, çanta kombinle çok iyi patlamış!"
+      },
+      {
+        "user": "duygu_ozaslan",
+        "avatar": "images/profiller-img.png",
+        "text": "Longchamp de alternatif olarak çok güzel durabilirdi."
+      }
+    ],
+    "dupes": [
+      {
+        "user": "eliiif",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Çanta", "brand": "Zara", "link": "#" },
+          { "category": "Pantolon", "brand": "TrendyolMilla", "link": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "postId": "post-102",
+    "userId": "user-2",
+    "imageUrl": "images/görsel.jpeg",
+    "createdAt": "2026-09-12T09:15:00Z",
+    "commentCount": 58,
+    "products": [
+      { "category": "Ceket", "brand": "Mango", "link": "#" },
+      { "category": "Gözlük", "brand": "Ray-Ban", "link": "#" },
+      { "category": "Ayakkabı", "brand": "Adidas Samba", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "danla_bilic",
+        "avatar": "images/profiller-img.png",
+        "text": "Ceket tam bir fiyat performans ürünü."
+      }
+    ],
+    "dupes": [
+      {
+        "user": "ala_tokel",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Ceket", "brand": "Stradivarius", "link": "#" },
+          { "category": "Ayakkabı", "brand": "Puma Palermo", "link": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "postId": "post-103",
+    "userId": "user-4",
+    "imageUrl": "images/görsel.jpeg",
+    "createdAt": "2026-09-14T11:00:00Z",
+    "commentCount": 12,
+    "products": [
+      { "category": "Elbise", "brand": "Massimo Dutti", "link": "#" },
+      { "category": "Kupe", "brand": "Tohum Craft", "link": "#" },
+      { "category": "Topuklu", "brand": "Beymen", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "cansu_akin",
+        "avatar": "images/profiller-img.png",
+        "text": "Gece davetleri için çok şık bir seçim!"
+      }
+    ],
+    "dupes": [
+      {
+        "user": "ece_sucuoğlu",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Elbise", "brand": "Mango", "link": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "postId": "post-104",
+    "userId": "user-3",
+    "imageUrl": "images/profile.jpg",
+    "createdAt": "2026-09-08T18:45:00Z",
+    "commentCount": 89,
+    "products": [
+      { "category": "T-Shirt", "brand": "Acne Studios", "link": "#" },
+      { "category": "Jean", "brand": "Levi's 501", "link": "#" },
+      { "category": "Sneaker", "brand": "New Balance 530", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "damla_altun",
+        "avatar": "images/profiller-img.png",
+        "text": "Günlük kullanım için aşırı konforlu duruyor."
+      }
+    ],
+    "dupes": [
+      {
+        "user": "danla_bilic",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Jean", "brand": "Pull&Bear", "link": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "postId": "post-105",
+    "userId": "user-2",
+    "imageUrl": "images/görsel.jpeg",
+    "createdAt": "2026-09-13T16:20:00Z",
+    "commentCount": 35,
+    "products": [
+      { "category": "Gömlek", "brand": "COS", "link": "#" },
+      { "category": "Etek", "brand": "Zara", "link": "#" },
+      { "category": "Babet", "brand": "Miu Miu", "link": "#" }
+    ],
+    "comments": [
+      {
+        "user": "duygu_ozaslan",
+        "avatar": "images/profiller-img.png",
+        "text": "Babetlerin rengi harika."
+      }
+    ],
+    "dupes": [
+      {
+        "user": "miraycobanoglu",
+        "avatar": "images/profiller-img.png",
+        "items": [
+          { "category": "Babet", "brand": "Bershka", "link": "#" }
+        ]
+      }
+    ]
+  }
+]
