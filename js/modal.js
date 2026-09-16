@@ -1,4 +1,4 @@
-import { addCommentToPost, deleteCommentFromPost, addDupeToPost } from './services/postService.js';
+import { addCommentToPost, deleteCommentFromPost, addDupeToPost, createNewPost } from './services/postService.js';
 import { createCommentHTML } from './renderers/postDetailRenderer.js';
 
 // 1. Genel Modal Açma/Kapatma Fonksiyonu
@@ -140,7 +140,6 @@ export function setupDupeModals(currentPost) {
 
   if (!currentPost) return;
 
-  // 1. Ürünleri Dinamik Doldur
   const renderDupProducts = () => {
     if (dupProductList && currentPost.products) {
       dupProductList.innerHTML = currentPost.products.map(p => `
@@ -159,7 +158,6 @@ export function setupDupeModals(currentPost) {
     }
   };
 
-  // 2. Muadil Ekle Butonuna Tıklandığında Ekleme Modalını Aç
   const bindAddDupButtons = () => {
     const addDupBtns = dupProductList?.querySelectorAll('.lk-btn-add-dup');
     addDupBtns?.forEach(btn => {
@@ -171,7 +169,6 @@ export function setupDupeModals(currentPost) {
     });
   };
 
-  // 3. Muadil Önerileri + Butonuna Tıklama
   if (btnOpenDupModal) {
     btnOpenDupModal.onclick = (e) => {
       e.preventDefault();
@@ -181,7 +178,6 @@ export function setupDupeModals(currentPost) {
     };
   }
 
-  // 4. Kapatma Butonları
   if (btnCloseDup) {
     btnCloseDup.onclick = () => {
       dupModal?.classList.remove('active');
@@ -195,7 +191,6 @@ export function setupDupeModals(currentPost) {
     };
   }
 
-  // Dışarı tıklayınca kapatma
   window.addEventListener('click', (e) => {
     if (e.target === dupModal) {
       dupModal.classList.remove('active');
@@ -206,18 +201,12 @@ export function setupDupeModals(currentPost) {
     }
   });
 
-  // 5. Görsel Seçildiğinde Dosya Adını Ekrana Yazma
   if (fileUpload && uploadSpan) {
     fileUpload.onchange = () => {
-      if (fileUpload.files.length > 0) {
-        uploadSpan.textContent = fileUpload.files[0].name;
-      } else {
-        uploadSpan.textContent = "Yükle";
-      }
+      uploadSpan.textContent = fileUpload.files.length > 0 ? fileUpload.files[0].name : "Yükle";
     };
   }
 
-  // 6. Form Gönderildiğinde Sıkıştırıp Kaydetme
   if (formAddDupe) {
     formAddDupe.onsubmit = async (e) => {
       e.preventDefault();
@@ -226,10 +215,8 @@ export function setupDupeModals(currentPost) {
       const linkInput = formAddDupe.querySelector('input[type="url"]');
 
       let imageBase64 = null;
-
       if (fileUpload && fileUpload.files && fileUpload.files[0]) {
         const file = fileUpload.files[0];
-        // Görsel Sıkıştırma Mantığı (Canvas ile optimize edildi)
         imageBase64 = await new Promise((resolve) => {
           const reader = new FileReader();
           reader.onload = (event) => {
@@ -240,7 +227,6 @@ export function setupDupeModals(currentPost) {
               const scaleSize = MAX_WIDTH / img.width;
               canvas.width = MAX_WIDTH;
               canvas.height = img.height * scaleSize;
-
               const ctx = canvas.getContext('2d');
               ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
               resolve(canvas.toDataURL('image/jpeg', 0.6));
@@ -253,7 +239,7 @@ export function setupDupeModals(currentPost) {
 
       const dupeData = {
         category: selectedCategory,
-        brand: brandInput.value.trim(),
+        brand: brandInput ? brandInput.value.trim() : '',
         link: linkInput ? linkInput.value.trim() : '#',
         image: imageBase64
       };
@@ -264,15 +250,137 @@ export function setupDupeModals(currentPost) {
           currentPost.dupes = updatedPost.dupes;
           formAddDupe.reset();
           if (uploadSpan) uploadSpan.textContent = "Yükle";
-          
           addDupeModal?.classList.remove('active');
           dupModal?.classList.remove('active');
           document.body.style.overflow = 'auto';
-
           location.reload();
         }
       } catch (err) {
         console.error("Muadil ekleme hatası:", err);
+      }
+    };
+  }
+}
+
+// 4. Yeni Gönderi Oluşturma Modalını Yöneten Fonksiyon
+export function setupCreatePostModal() {
+  const btnCreatePost = document.getElementById('btnCreatePost');
+  const createPostModal = document.getElementById('createPostModal');
+  const btnCloseCreatePost = document.getElementById('btnCloseCreatePost');
+  const formCreatePost = document.getElementById('formCreatePost');
+
+  const postImageUpload = document.getElementById('postImageUpload');
+  const uploadFileName = document.getElementById('uploadFileName');
+
+  const statusModal = document.getElementById('statusModal');
+  const statusSpinner = statusModal?.querySelector('.lk-spinner');
+  const statusCheckIcon = statusModal?.querySelector('.lk-check-icon');
+  const statusText = document.getElementById('statusText');
+
+  if (!createPostModal) return;
+
+  // Modal Açma
+  if (btnCreatePost) {
+    btnCreatePost.onclick = () => {
+      createPostModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Arka plan kaydırmasını engelle
+    };
+  }
+
+  // Modal Kapatma Fonksiyonu
+  const closeModal = () => {
+    createPostModal.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Arka plan kaydırmasını geri aç
+  };
+
+  // Kapat Butonuna Tıklandığında Kapat
+  if (btnCloseCreatePost) btnCloseCreatePost.onclick = closeModal;
+
+  // DIŞ KISMA (SİYAH KARARTIYA) TIKLANDIĞINDA KAPANMA MANTIĞI
+  createPostModal.onclick = (e) => {
+    if (e.target === createPostModal) {
+      closeModal();
+    }
+  };
+
+  // Görsel Seçildiğinde Dosya Adını Gösterme
+  if (postImageUpload && uploadFileName) {
+    postImageUpload.onchange = () => {
+      uploadFileName.textContent = postImageUpload.files.length > 0 ? postImageUpload.files[0].name : "Yükle";
+    };
+  }
+
+  // Form Gönderildiğinde
+  if (formCreatePost) {
+    formCreatePost.onsubmit = async (e) => {
+      e.preventDefault();
+
+      const tagCategory = (
+        document.getElementById('postTagInput') || 
+        formCreatePost.querySelector('input[name="category"]') || 
+        formCreatePost.querySelectorAll('input[type="text"]')[0]
+      )?.value.trim() || '';
+
+      const brand = (
+        document.getElementById('postBrandInput') || 
+        formCreatePost.querySelector('input[name="brand"]') || 
+        formCreatePost.querySelectorAll('input[type="text"]')[1]
+      )?.value.trim() || '';
+
+      const productLink = (
+        document.getElementById('postLinkInput') || 
+        formCreatePost.querySelector('input[type="url"]') || 
+        formCreatePost.querySelector('input[name="link"]')
+      )?.value.trim() || '';
+
+      let imageBase64 = null;
+      if (postImageUpload && postImageUpload.files && postImageUpload.files[0]) {
+        const file = postImageUpload.files[0];
+        imageBase64 = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const MAX_WIDTH = 500;
+              const scaleSize = MAX_WIDTH / img.width;
+              canvas.width = MAX_WIDTH;
+              canvas.height = img.height * scaleSize;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+              resolve(canvas.toDataURL('image/jpeg', 0.7));
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      closeModal();
+
+      if (statusModal) {
+        statusModal.classList.add('active');
+        if (statusSpinner) statusSpinner.classList.remove('d-none');
+        if (statusCheckIcon) statusCheckIcon.classList.add('d-none');
+        if (statusText) statusText.textContent = '" Paylaşım Yükleniyor... "';
+
+        await createNewPost({
+          tagCategory,
+          brand,
+          productLink,
+          image: imageBase64
+        });
+
+        setTimeout(() => {
+          if (statusSpinner) statusSpinner.classList.add('d-none');
+          if (statusCheckIcon) statusCheckIcon.classList.remove('d-none');
+          if (statusText) statusText.textContent = '" Paylaşım Başarıyla Yüklendi! "';
+
+          setTimeout(() => {
+            statusModal.classList.remove('active');
+            location.reload();
+          }, 1000);
+        }, 1200);
       }
     };
   }

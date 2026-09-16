@@ -1,98 +1,82 @@
-import { modal, setupCommentModal , setupDupeModals } from "./modal.js";
+import { modal, setupCommentModal, setupDupeModals, setupCreatePostModal } from "./modal.js";
 import { dropdown } from "./dropdown.js";
-import { getAllPosts, getPostById } from './services/postService.js';
+import { getAllPosts, getPostById, getMyPosts, getCurrentUserId } from './services/postService.js';
 import { renderPosts } from './renderers/postRenderer.js';
 import { getUsers, getUserById } from './services/userService.js';
 import { renderProfiles } from './renderers/profilesRenderer.js';
 import { renderProfileDetail } from './renderers/profileDetailRenderer.js';
 import { renderPostDetail } from "./renderers/postDetailRenderer.js"; 
+import { renderMyPosts, renderMyProfileHeader } from "./renderers/myPostRenderer.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-  try { modal(); } catch (e) { console.error("Modal hatası:", e); }
-  try { dropdown(); } catch (e) { console.error("Dropdown hatası:", e); }
+  try { modal(); } catch (e) {}
+  try { dropdown(); } catch (e) {}
+  try { setupCreatePostModal(); } catch (e) {}
 
   const urlParams = new URLSearchParams(window.location.search);
 
+  // 1. KOMBİN DETAY SAYFASI (detail.html?postId=post-101)
   const postId = urlParams.get('postId');
   if (postId) {
     try {
       const post = await getPostById(postId);
       if (post) {
         renderPostDetail(post);
-        setupCommentModal(post); 
+        setupCommentModal(post);
         setupDupeModals(post);
       }
-    } catch (e) {
-      console.error("Post detay yükleme hatası:", e);
-    }
+    } catch (e) {}
   }
 
+  // 2. PROFİL DETAY SAYFASI (profile-detail.html?userId=user-2)
   const userId = urlParams.get('userId');
   if (userId) {
     try {
       const user = await getUserById(userId);
-      if (user) {
-        await renderProfileDetail(user);
-      }
-    } catch (e) {
-      console.error("Profil detay yükleme hatası:", e);
-    }
+      if (user) await renderProfileDetail(user);
+    } catch (e) {}
   }
 
-  // ANA SAYFA (index.html)
+  // 3. ANA SAYFA (index.html)
   const postsContainer = document.getElementById('postsContainer');
   if (postsContainer) {
     try {
-      const currentFilterText = document.getElementById('currentFilterText');
-      const filterOptionBtn = document.getElementById('filterOptionBtn');
-
       let posts = await getAllPosts();
-      let activeFilter = 'newest'; 
-
-      const sortByNewest = () => {
-        posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        renderPosts(posts, postsContainer);
-      };
-
-      const sortByPopular = () => {
-        posts.sort((a, b) => (b.commentCount || 0) - (a.commentCount || 0));
-        renderPosts(posts, postsContainer);
-      };
-
-      sortByNewest();
-
-      if (filterOptionBtn) {
-        filterOptionBtn.addEventListener('click', () => {
-          if (activeFilter === 'newest') {
-            activeFilter = 'popular';
-            sortByPopular();
-            if (currentFilterText) currentFilterText.textContent = 'En Çok Yorum Alanlar';
-            filterOptionBtn.textContent = 'En Yeniler';
-          } else {
-            activeFilter = 'newest';
-            sortByNewest();
-            if (currentFilterText) currentFilterText.textContent = 'En Yeniler';
-            filterOptionBtn.textContent = 'En Çok Yorum Alanlar';
-          }
-          filterOptionBtn.blur();
-        });
-      }
-    } catch (e) {
-      console.error("Ana sayfa post yükleme hatası:", e);
-    }
+      renderPosts(posts, postsContainer);
+    } catch (e) {}
   }
 
-  // 5. PROFİLLER SAYFASI (profiles.html)
+  // 4. PROFİLLER SAYFASI (profiles.html)
   const profilesContainer = document.getElementById('profilesContainer');
   if (profilesContainer) {
     try {
       const users = await getUsers();
       renderProfiles(users, profilesContainer);
-    } catch (e) {
-      console.error("Profiller yükleme hatası:", e);
-    }
+    } catch (e) {}
   }
 
+  // 5. SAYFAM SAYFASI (sayfam.html)
+  const myPostsGrid = document.querySelector('.lk-my-posts-grid .row');
+  if (myPostsGrid) {
+    try {
+      const currentUserId = getCurrentUserId(); // 'user-1'
+
+      // users.json içinden userId === 'user-1' olan kullanıcıyı bul
+      const users = await getUsers();
+      const currentUser = users ? users.find(u => String(u.userId || u.id) === String(currentUserId)) : null;
+
+      // Header bilgilerini yazdır (Damla Altun, avatar, takipçi sayısı)
+      if (currentUser) {
+        renderMyProfileHeader(currentUser);
+      }
+
+      // user-1'e ait postları süz ve bas
+      const myPosts = await getMyPosts();
+      renderMyPosts(myPosts, myPostsGrid);
+    } catch (e) {
+      console.error("Sayfam yüklenirken hata oluştu:", e);
+    }
+  }
 
 });

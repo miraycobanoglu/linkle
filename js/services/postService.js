@@ -1,4 +1,12 @@
-// Post verilerini LocalStorage veya JSON'dan çekme
+// 1. Aktif Oturum ID'sini Döner (Varsayılan: 'user-1')
+export function getCurrentUserId() {
+  if (!localStorage.getItem('currentUserId')) {
+    localStorage.setItem('currentUserId', 'user-1');
+  }
+  return localStorage.getItem('currentUserId');
+}
+
+// 2. Tüm Gönderileri Getir (LocalStorage veya JSON)
 export async function getAllPosts() {
   const savedPosts = localStorage.getItem('my_posts');
   if (savedPosts) return JSON.parse(savedPosts);
@@ -15,7 +23,75 @@ export async function getAllPosts() {
   }
 }
 
-// Posttan yorum silme
+// 3. ID Eşleşmesine Göre Tek Post Getir
+export async function getPostById(postId) {
+  const posts = await getAllPosts();
+  return posts.find(p => String(p.postId) === String(postId));
+}
+
+// 4. İstenen Kullanıcı ID'sine Göre Postları Getirir
+export async function getPostsByUserId(userId) {
+  const allPosts = await getAllPosts();
+  return allPosts.filter(post => String(post.userId) === String(userId));
+}
+
+// 5. Oturum Açan Kullanıcının ('user-1') Postlarını Süzer
+export async function getMyPosts() {
+  const currentUserId = getCurrentUserId();
+  return await getPostsByUserId(currentUserId);
+}
+
+// 6. Yeni Gönderi Ekleme
+export async function createNewPost(postData) {
+  const posts = await getAllPosts();
+  const currentUserId = getCurrentUserId();
+
+  const newPost = {
+    postId: 'post-' + Date.now(),
+    userId: currentUserId,
+    imageUrl: postData.image || 'images/görsel.jpeg',
+    createdAt: new Date().toISOString(),
+    commentCount: 0,
+    products: [
+      {
+        category: postData.tagCategory,
+        brand: postData.brand,
+        link: postData.productLink || '#'
+      }
+    ],
+    comments: [],
+    dupes: []
+  };
+
+  posts.unshift(newPost);
+  localStorage.setItem('my_posts', JSON.stringify(posts));
+  return newPost;
+}
+
+// 7. Yorum Ekleme
+export async function addCommentToPost(postId, commentText) {
+  const posts = await getAllPosts();
+  const postIndex = posts.findIndex(p => String(p.postId) === String(postId));
+
+  if (postIndex !== -1) {
+    const newComment = {
+      user: "damlaaltunn",
+      avatar: "images/profiller-img.png",
+      text: commentText
+    };
+
+    if (!posts[postIndex].comments) posts[postIndex].comments = [];
+
+    posts[postIndex].comments.push(newComment);
+    posts[postIndex].commentCount = (posts[postIndex].commentCount || 0) + 1;
+
+    localStorage.setItem('my_posts', JSON.stringify(posts));
+    return { updatedPost: posts[postIndex], newComment };
+  }
+  return null;
+}
+
+// 8. Yorum Silme
 export async function deleteCommentFromPost(postId, commentIndex) {
   const posts = await getAllPosts();
   const postIndex = posts.findIndex(p => String(p.postId) === String(postId));
@@ -30,57 +106,17 @@ export async function deleteCommentFromPost(postId, commentIndex) {
   return null;
 }
 
-// ID'ye göre tek bir post getirme (Esnek String Dönüşümü)
-export async function getPostById(postId) {
-  const posts = await getAllPosts();
-  return posts.find(p => String(p.postId) === String(postId));
-}
-
-// Belirli bir kullanıcının paylaştığı tüm postları getirir
-export async function getPostsByUserId(userId) {
-  const allPosts = await getAllPosts();
-  return allPosts.filter(post => String(post.userId) === String(userId));
-}
-
-// Posta yeni yorum ekleme ve LocalStorage'ı güncelleme
-export async function addCommentToPost(postId, commentText) {
-  const posts = await getAllPosts();
-  const postIndex = posts.findIndex(p => String(p.postId) === String(postId));
-
-  if (postIndex !== -1) {
-    const newComment = {
-      user: "mevcut_kullanici",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
-      text: commentText
-    };
-
-    if (!posts[postIndex].comments) {
-      posts[postIndex].comments = [];
-    }
-
-    posts[postIndex].comments.push(newComment);
-    posts[postIndex].commentCount = (posts[postIndex].commentCount || 0) + 1;
-
-    localStorage.setItem('my_posts', JSON.stringify(posts));
-    return { updatedPost: posts[postIndex], newComment };
-  }
-
-  return null;
-}
-
-// Posta yeni muadil önerisi ekleme
+// 9. Muadil Ekleme
 export async function addDupeToPost(postId, dupeData) {
   const posts = await getAllPosts();
   const postIndex = posts.findIndex(p => String(p.postId) === String(postId));
 
   if (postIndex !== -1) {
-    if (!posts[postIndex].dupes) {
-      posts[postIndex].dupes = [];
-    }
+    if (!posts[postIndex].dupes) posts[postIndex].dupes = [];
 
     const newDupeGroup = {
-      user: "mevcut_kullanici",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
+      user: "damlaaltunn",
+      avatar: "images/profiller-img.png",
       items: [
         {
           category: dupeData.category,
@@ -95,6 +131,5 @@ export async function addDupeToPost(postId, dupeData) {
     localStorage.setItem('my_posts', JSON.stringify(posts));
     return posts[postIndex];
   }
-
   return null;
 }
