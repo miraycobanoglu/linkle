@@ -38,13 +38,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {}
   }
 
-  // 3. ANA SAYFA (index.html)
+// 3. ANA SAYFA (index.html)
   const postsContainer = document.getElementById('postsContainer');
   if (postsContainer) {
     try {
       let posts = await getAllPosts();
       renderPosts(posts, postsContainer);
-    } catch (e) {}
+
+      // Filtreleme / Sıralama Mantığı
+      const filterBtn = document.getElementById('filterBtn');
+      const filterOptionBtn = document.getElementById('filterOptionBtn');
+      const filterDropdown = document.querySelector('.lk-filter-dropdown');
+      const currentFilterText = document.getElementById('currentFilterText');
+
+      if (filterOptionBtn) {
+        filterOptionBtn.addEventListener('click', () => {
+          let sortedPosts = [...posts];
+
+          // Seçili moda göre sıralama mantığı
+          if (currentFilterText.textContent === 'En Yeniler') {
+            // Yorum sayısına göre büyükten küçüğe sırala
+            sortedPosts.sort((a, b) => {
+              const countA = a.comments ? a.comments.length : 0;
+              const countB = b.comments ? b.comments.length : 0;
+              return countB - countA;
+            });
+
+            currentFilterText.textContent = 'En Çok Yorum Alanlar';
+            filterOptionBtn.textContent = 'En Yeniler';
+          } else {
+            // Tekrar varsayılan (En Yeniler) sırasına getir
+            currentFilterText.textContent = 'En Yeniler';
+            filterOptionBtn.textContent = 'En Çok Yorum Alanlar';
+          }
+
+          // Sıralanmış postları tekrar grid'e bas
+          renderPosts(sortedPosts, postsContainer);
+
+          // Açılır filtre menüsünü kapat (varsa active sınıfını kaldırır)
+          if (filterDropdown) filterDropdown.classList.remove('active');
+        });
+      }
+
+    } catch (e) {
+      console.error("Ana sayfa postları yüklenirken hata oluştu:", e);
+    }
   }
 
   // 4. PROFİLLER SAYFASI (profiles.html)
