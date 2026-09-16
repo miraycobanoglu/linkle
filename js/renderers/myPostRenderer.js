@@ -22,6 +22,18 @@ export function renderMyProfileHeader(currentUser) {
     followerEl.textContent = currentUser.followerCount !== undefined ? currentUser.followerCount : 0;
   }
 }
+// Navbardaki Hesap Profil Resmini Güncelleyen Fonksiyon
+export function renderNavbarAvatar(currentUser) {
+  if (!currentUser || !currentUser.avatar) return;
+
+  // Navbardaki Hesap avatarını yakala
+  const navbarAvatars = document.querySelectorAll('.lk-account-dropdown .lk-avatar, .hesap-avatar');
+  navbarAvatars.forEach(img => {
+    img.src = currentUser.avatar;
+    img.alt = currentUser.name || 'Profil';
+  });
+}
+
 
 // Gönderileri Ekrana Basma
 export function renderMyPosts(posts, container) {

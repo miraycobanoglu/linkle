@@ -6,7 +6,7 @@ import { getUsers, getUserById } from './services/userService.js';
 import { renderProfiles } from './renderers/profilesRenderer.js';
 import { renderProfileDetail } from './renderers/profileDetailRenderer.js';
 import { renderPostDetail } from "./renderers/postDetailRenderer.js"; 
-import { renderMyPosts, renderMyProfileHeader } from "./renderers/myPostRenderer.js";
+import { renderMyPosts, renderMyProfileHeader, renderNavbarAvatar } from "./renderers/myPostRenderer.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -14,7 +14,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   try { dropdown(); } catch (e) {}
   try { setupCreatePostModal(); } catch (e) {}
 
+  // GLOBAL: HANGİ SAYFADA OLURSA OLSUN NAVBAR AVATARINI GÜNCELLE
+  try {
+    const currentUserId = getCurrentUserId(); // 'user-1'
+    const users = await getUsers();
+    const currentUser = users ? users.find(u => String(u.userId || u.id) === String(currentUserId)) : null;
+    
+    if (currentUser) {
+      renderNavbarAvatar(currentUser);
+    }
+  } catch (e) {
+    console.error("Navbar avatarı güncellenirken hata oluştu:", e);
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
+
+  // ... GERİ KALAN SAYFA KONTROLLERİN (1. KOMBİN DETAY, 2. PROFİL DETAY vs.) AYNEN DEVAM EDİYOR
 
   // 1. KOMBİN DETAY SAYFASI (detail.html?postId=post-101)
   const postId = urlParams.get('postId');
