@@ -3,7 +3,7 @@ export function renderMyProfileHeader(currentUser) {
   if (!currentUser) return;
 
   //Profil Resmi (users.json -> avatar)
-  const avatarImgs = document.querySelectorAll('.lk-my-avatar, .profil-resmi img, .lk-profil-resmi img');
+  const avatarImgs = document.querySelectorAll('.lk-avatar, .lk-my-avatar');
   avatarImgs.forEach(img => {
     if (currentUser.avatar) {
       img.src = currentUser.avatar;
