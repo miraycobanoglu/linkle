@@ -9,7 +9,7 @@ const path = require('path');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
-// 1. Dist Klasörünü Hatasız Temizleme (Node.js fs ile)
+// Dist Klasörünü Temizleme
 function clean(done) {
     const distPath = path.join(__dirname, 'dist');
     if (fs.existsSync(distPath)) {
@@ -18,28 +18,28 @@ function clean(done) {
     done();
 }
 
-// 2. HTML Dosyalarını Kopyalama
+// HTML Dosyalarını Kopyalama
 function copyHtml() {
     return gulp
         .src('*.html')
         .pipe(gulp.dest('dist'));
 }
 
-// 3. Görselleri Kopyalama
+// Görselleri Kopyalama
 function copyImages() {
     return gulp
         .src('images/**/*')
         .pipe(gulp.dest('dist/images'));
 }
 
-// 4. JSON Verilerini Kopyalama
+// JSON Verilerini Kopyalama
 function copyJson() {
     return gulp
         .src('data/**/*.json')
         .pipe(gulp.dest('dist/data'));
 }
 
-// 5. SCSS Derleme ve Minify Etme
+// SCSS Derleme ve Minify Etme
 function compileAndMinifyCss() {
     return gulp
         .src('scss/style.scss')
@@ -50,7 +50,7 @@ function compileAndMinifyCss() {
         .pipe(browserSync.stream());
 }
 
-// 6. JavaScript Dosyalarını Minify Etme
+// JavaScript Dosyalarını Minify Etme
 function minifyJs() {
     return gulp
         .src('js/**/*.js')
@@ -59,7 +59,7 @@ function minifyJs() {
         .pipe(gulp.dest('dist/js'));
 }
 
-// 7. Canlı Sunucu ve İzleme (Watch & BrowserSync)
+// Canlı Sunucu ve İzleme (Watch & BrowserSync)
 function serve(done) {
     browserSync.init({
         server: {
@@ -73,7 +73,7 @@ function serve(done) {
     gulp.watch('data/**/*.json').on('change', browserSync.reload);
 }
 
-// Paketleme (Build) Görevi
+// Paketleme
 const build = gulp.series(
     clean,
     compileAndMinifyCss,
