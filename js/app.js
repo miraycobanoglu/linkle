@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  // ... GERİ KALAN SAYFA KONTROLLERİN (1. KOMBİN DETAY, 2. PROFİL DETAY vs.) AYNEN DEVAM EDİYOR
-
   // 1. KOMBİN DETAY SAYFASI (detail.html?postId=post-101)
   const postId = urlParams.get('postId');
   if (postId) {
@@ -53,15 +51,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {}
   }
 
-// 3. ANA SAYFA (index.html)
+  // 3. ANA SAYFA (index.html)
   const postsContainer = document.getElementById('postsContainer');
+  const searchInput = document.getElementById('searchInput');
+
   if (postsContainer) {
     try {
       let posts = await getAllPosts();
+      let users = await getUsers();
+      
       renderPosts(posts, postsContainer);
 
+      // Arama İnput Event Listener
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+
+          if (!query) {
+            renderPosts(posts, postsContainer);
+            return;
+          }
+
+          const filteredPosts = posts.filter(post => {
+            const postOwner = users.find(u => String(u.userId || u.id) === String(post.userId));
+            const nameMatch = postOwner?.name?.toLowerCase().includes(query);
+            const usernameMatch = postOwner?.username?.toLowerCase().includes(query);
+            const brandMatch = post.products?.some(p => p.brand?.toLowerCase().includes(query));
+            const descMatch = post.description?.toLowerCase().includes(query);
+
+            return nameMatch || usernameMatch || brandMatch || descMatch;
+          });
+
+          renderPosts(filteredPosts, postsContainer);
+        });
+      }
+
       // Filtreleme / Sıralama Mantığı
-      const filterBtn = document.getElementById('filterBtn');
       const filterOptionBtn = document.getElementById('filterOptionBtn');
       const filterDropdown = document.querySelector('.lk-filter-dropdown');
       const currentFilterText = document.getElementById('currentFilterText');
@@ -70,9 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         filterOptionBtn.addEventListener('click', () => {
           let sortedPosts = [...posts];
 
-          // Seçili moda göre sıralama mantığı
           if (currentFilterText.textContent === 'En Yeniler') {
-            // Yorum sayısına göre büyükten küçüğe sırala
             sortedPosts.sort((a, b) => {
               const countA = a.comments ? a.comments.length : 0;
               const countB = b.comments ? b.comments.length : 0;
@@ -82,21 +105,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentFilterText.textContent = 'En Çok Yorum Alanlar';
             filterOptionBtn.textContent = 'En Yeniler';
           } else {
-            // Tekrar varsayılan (En Yeniler) sırasına getir
             currentFilterText.textContent = 'En Yeniler';
             filterOptionBtn.textContent = 'En Çok Yorum Alanlar';
           }
 
-          // Sıralanmış postları tekrar grid'e bas
           renderPosts(sortedPosts, postsContainer);
 
-          // Açılır filtre menüsünü kapat (varsa active sınıfını kaldırır)
           if (filterDropdown) filterDropdown.classList.remove('active');
         });
       }
 
     } catch (e) {
-      console.error("Ana sayfa postları yüklenirken hata oluştu:", e);
+      console.error("Ana sayfa yüklenirken hata oluştu:", e);
     }
   }
 
@@ -106,6 +126,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const users = await getUsers();
       renderProfiles(users, profilesContainer);
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          const filteredUsers = users.filter(user => 
+            user.name?.toLowerCase().includes(query) || 
+            user.username?.toLowerCase().includes(query)
+          );
+          renderProfiles(filteredUsers, profilesContainer);
+        });
+      }
     } catch (e) {}
   }
 
@@ -113,18 +144,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const myPostsGrid = document.querySelector('.lk-my-posts-grid .row');
   if (myPostsGrid) {
     try {
-      const currentUserId = getCurrentUserId(); // 'user-1'
-
-      // users.json içinden userId === 'user-1' olan kullanıcıyı bul
+      const currentUserId = getCurrentUserId();
       const users = await getUsers();
       const currentUser = users ? users.find(u => String(u.userId || u.id) === String(currentUserId)) : null;
 
-      // Header bilgilerini yazdır (Damla Altun, avatar, takipçi sayısı)
       if (currentUser) {
         renderMyProfileHeader(currentUser);
       }
 
-      // user-1'e ait postları süz ve bas
       const myPosts = await getMyPosts();
       renderMyPosts(myPosts, myPostsGrid);
     } catch (e) {

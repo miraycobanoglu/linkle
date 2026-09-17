@@ -4,7 +4,14 @@ import { getPostsByUserId } from '../services/postService.js';
 export async function renderProfileDetail(user) {
   if (!user) return;
 
-  // 1. Profil Bilgilerini Doldur
+  // Takipçi ve Takip Edilen Sayıları
+  const followersEl = document.querySelector('.followers-count');
+  if (followersEl) followersEl.textContent = user.followerCount || user.followers || 0;
+
+  const followingEl = document.querySelector('.following-count');
+  if (followingEl) followingEl.textContent = user.followingCount || user.following || 0;
+
+  // Profil Bilgilerini Doldur
   const avatarImg = document.querySelector('.lk-profile-avatar');
   const usernameSpan = document.querySelector('.lk-username');
   const fullnameH1 = document.querySelector('.lk-profile-fullname');
@@ -16,20 +23,28 @@ export async function renderProfileDetail(user) {
   if (fullnameH1) fullnameH1.textContent = user.name;
   if (followerCountStrong) followerCountStrong.textContent = user.followerCount;
 
-  // 2. Takip Butonu Durumu
+  // Takip Butonu Durumu
   const updateButtonText = () => {
     if (followBtn) {
       if (user.isFollowing) {
         followBtn.textContent = 'Following';
-        followBtn.style.background = '#e2e8f0';
-        followBtn.style.color = '#334155';
+        styleFollowButton(followBtn, true);
       } else {
         followBtn.textContent = 'Follow';
-        followBtn.style.background = 'linear-gradient(90deg, #F2E0FB 0%, #FFFFFF 100%)';
-        followBtn.style.color = '#752699';
+        styleFollowButton(followBtn, false);
       }
     }
   };
+
+  function styleFollowButton(btn, isFollowing) {
+    if (isFollowing) {
+      btn.style.background = '#e2e8f0';
+      btn.style.color = '#334155';
+    } else {
+      btn.style.background = 'linear-gradient(90deg, #F2E0FB 0%, #FFFFFF 100%)';
+      btn.style.color = '#752699';
+    }
+  }
 
   updateButtonText();
 
@@ -47,10 +62,18 @@ export async function renderProfileDetail(user) {
     });
   }
 
-  // 3. Kullanıcının Kombinlerini Dinamik Basma
+  // Kullanıcının Kombinlerini ve Paylaşım Sayısını Dinamik Basma
   const profileGrid = document.querySelector('.lk-profile-grid');
   if (profileGrid) {
     const userPosts = await getPostsByUserId(user.userId);
+
+    // Paylaşım Sayısını Güncelle
+ // Paylaşım Sayısını ve Metnini Güncelle
+    const statCountEl = document.querySelector('.paylasim-sayi');
+    if (statCountEl) {
+      const count = userPosts ? userPosts.length : 0;
+      statCountEl.innerHTML = `<strong>${count}</strong> paylaşım`;
+    }
 
     if (userPosts && userPosts.length > 0) {
       profileGrid.innerHTML = userPosts.map(post => `
